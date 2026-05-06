@@ -1,0 +1,373 @@
+/* ==========================================
+   AD BANNER STYLES - Shared across all pages
+   ========================================== */
+
+/* Floating Ad Banner (Top) */
+.ad-banner-float {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ad-banner-float .ad-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.ad-banner-float .ad-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ad-banner-float .ad-tag {
+    font-size: 0.7rem;
+    color: #ffd700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.ad-banner-float .ad-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.ad-banner-float .ad-description {
+    font-size: 0.8rem;
+    color: #ccc;
+    max-width: 500px;
+}
+
+.ad-banner-float .ad-link {
+    background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+    white-space: nowrap;
+}
+
+.ad-banner-float .ad-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+    background: linear-gradient(135deg, #ff6b6b 0%, #e94560 100%);
+}
+
+.ad-banner-float .close-ad {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.ad-banner-float .close-ad:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) rotate(90deg);
+}
+
+/* Floating Ad Card (Bottom Right Corner) */
+.ad-floating-card {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 280px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    z-index: 9998;
+    animation: slideUp 0.5s ease-out;
+    cursor: pointer;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.ad-floating-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+}
+
+.ad-floating-card .ad-card-image {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.ad-floating-card .ad-card-content {
+    padding: 15px;
+}
+
+.ad-floating-card .ad-card-label {
+    display: inline-block;
+    background: #e94560;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.ad-floating-card .ad-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #1a1a2e;
+    line-height: 1.3;
+}
+
+.ad-floating-card .ad-card-text {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.ad-floating-card .ad-card-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.ad-floating-card .ad-card-cta:hover {
+    transform: scale(1.05);
+}
+
+.ad-floating-card .close-card {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.ad-floating-card .close-card:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: scale(1.1);
+}
+
+/* Inline Ad Banner */
+.ad-inline-banner {
+    margin: 40px 0;
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ad-inline-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translate(-30%, -30%); }
+    100% { transform: translate(30%, 30%); }
+}
+
+.ad-inline-banner .ad-inline-content {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.ad-inline-banner .ad-inline-tag {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.ad-inline-banner .ad-inline-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.ad-inline-banner .ad-inline-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.ad-inline-banner .ad-inline-btn {
+    position: relative;
+    z-index: 1;
+    background: white;
+    color: #764ba2;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.ad-inline-banner .ad-inline-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar Ad */
+.ad-sidebar {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.ad-sidebar .ad-sidebar-label {
+    font-size: 0.7rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.ad-sidebar .ad-sidebar-link {
+    display: block;
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.ad-sidebar .ad-sidebar-link:hover {
+    transform: scale(1.03);
+    box-shadow: 0 5px 20px rgba(56, 239, 125, 0.4);
+}
+
+.ad-sidebar .ad-sidebar-text {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .ad-banner-float {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .ad-banner-float .ad-text {
+        align-items: center;
+    }
+    
+    .ad-banner-float .ad-description {
+        display: none;
+    }
+    
+    .ad-banner-float .close-ad {
+        position: static;
+        transform: none;
+        margin-top: 10px;
+    }
+    
+    .ad-floating-card {
+        width: 250px;
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    .ad-inline-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+}
