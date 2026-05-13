@@ -380,35 +380,139 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup back button when article view exists
     setupBackButton();
 });
+// --- BẮT ĐẦU PHẦN SỬA LỖI NÚT EXPLORE ---
 document.addEventListener('DOMContentLoaded', () => {
-    const exploreBtn = document.getElementById('explore-btn');
-    const vinylDisc = document.getElementById('vinylDisc'); 
-    const bgAudio = document.getElementById('bgAudio');
+    
+    // 1. Tìm đúng nút Explore 
+    const exploreBtn = document.getElementById('explore-btn'); 
+    
+    // 2. Tìm đúng thẻ audio (Chữ A viết hoa, đã khớp với file HTML của bạn)
+    const bgAudio = document.getElementById('bgAudio'); 
 
-    if (exploreBtn && vinylDisc && bgAudio) {
+    if (exploreBtn) {
         exploreBtn.addEventListener('click', (e) => {
-            // Ngăn chặn trình duyệt nhảy giật cục (nhảy ngay lập tức)
-            e.preventDefault(); 
+            e.preventDefault(); // Ngăn trình duyệt giật trang lên đầu
 
-            // 1. Xử lý âm thanh và đĩa nhạc
-            if (bgAudio.paused) {
-                bgAudio.play();
-                vinylDisc.classList.add('spinning-active');
+            // Xử lý bật/tắt nhạc
+            if (bgAudio) {
+                if (bgAudio.paused) {
+                    bgAudio.play();
+                } else {
+                    bgAudio.pause();
+                }
             } else {
-                bgAudio.pause();
-                vinylDisc.classList.remove('spinning-active');
+                alert("Lỗi: Không tìm thấy loa phát nhạc (bgAudio) trong HTML!");
             }
 
-            // 2. Cuộn mượt mà xuống phân cảnh 1
-            const nextSection = document.getElementById('journey-part-1');
-            if (nextSection) {
-                nextSection.scrollIntoView({ 
-                    behavior: 'smooth', 
-                    block: 'start' 
-                });
-            }
+            // Cuộn mượt mà xuống dưới 1 màn hình
+            window.scrollBy({
+                top: window.innerHeight, 
+                behavior: 'smooth'
+            });
         });
     } else {
-        console.log("Không tìm thấy nút Explore, đĩa nhạc hoặc file Audio.");
+        console.log("Không tìm thấy nút Explore trên trang web này.");
+    }
+});
+// --- KẾT THÚC PHẦN SỬA LỖI ---
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const startBtn = document.getElementById('start-cyber-btn');
+    const retryBtn = document.getElementById('retry-btn');
+    const timeDisplay = document.getElementById('cyber-time');
+    const scoreDisplay = document.getElementById('cyber-score');
+    const progressFill = document.getElementById('progress-fill');
+    const spawnZone = document.getElementById('cyber-spawn-zone');
+    const overlay = document.getElementById('game-overlay');
+    const overlayTitle = document.getElementById('overlay-title');
+    const terminal = document.querySelector('.cyber-terminal');
+    
+    let score = 0;
+    let timeLeft = 15.0;
+    let gameInterval, spawnInterval;
+    let isPlaying = false;
+    const WIN_SCORE = 10;
+
+    startBtn.addEventListener('click', startSequence);
+    retryBtn.addEventListener('click', startSequence);
+
+    function startSequence() {
+        isPlaying = true;
+        score = 0;
+        timeLeft = 15.0;
+        updateUI();
+        overlay.classList.add('hidden');
+        spawnZone.innerHTML = '';
+        startBtn.style.display = 'none';
+
+        gameInterval = setInterval(() => {
+            timeLeft -= 0.1;
+            timeDisplay.innerText = Math.max(0, timeLeft).toFixed(1);
+            if (timeLeft <= 0) endSequence(false);
+        }, 100);
+
+        spawnInterval = setInterval(spawnObject, 800);
+    }
+
+    function spawnObject() {
+        const isBomb = Math.random() < 0.3; // 30% tỷ lệ xuất hiện bom
+        const obj = document.createElement('div');
+        obj.classList.add('cryo-box');
+        if (isBomb) {
+            obj.classList.add('bomb');
+            obj.innerText = '⚠️';
+        } else {
+            obj.innerText = ['🦞', '🐟', '🦑', '🦀'][Math.floor(Math.random() * 4)];
+        }
+
+        obj.style.left = '-100px';
+        spawnZone.appendChild(obj);
+
+        // Tốc độ tăng dần theo điểm số
+        const speed = Math.max(1.5, 3.5 - (score * 0.2)); 
+        setTimeout(() => {
+            obj.style.transition = `left ${speed}s linear`;
+            obj.style.left = '100%';
+        }, 50);
+
+        obj.addEventListener('click', () => {
+            if (!isPlaying) return;
+            if (isBomb) {
+                timeLeft -= 3.0; // Phạt trừ 3 giây
+                terminal.classList.add('shake');
+                setTimeout(() => terminal.classList.remove('shake'), 400);
+                obj.remove();
+            } else {
+                score++;
+                updateUI();
+                obj.style.transform = 'scale(0) translateY(-50px)';
+                setTimeout(() => obj.remove(), 300);
+                if (score >= WIN_SCORE) endSequence(true);
+            }
+        });
+
+        setTimeout(() => { if (spawnZone.contains(obj)) obj.remove(); }, 4000);
+    }
+
+    function updateUI() {
+        scoreDisplay.innerText = `${score}/${WIN_SCORE}`;
+        progressFill.style.width = `${(score / WIN_SCORE) * 100}%`;
+    }
+
+    function endSequence(isWin) {
+        isPlaying = false;
+        clearInterval(gameInterval);
+        clearInterval(spawnInterval);
+        
+        overlay.classList.remove('hidden');
+        if (isWin) {
+            overlayTitle.innerText = "MISSION SUCCESS";
+            overlayTitle.className = "win-text";
+            document.getElementById('overlay-msg').innerText = "All cargo secured. Original sweetness preserved!";
+        } else {
+            overlayTitle.innerText = "SYSTEM CRITICAL";
+            overlayTitle.className = "lose-text";
+            document.getElementById('overlay-msg').innerText = "Loading timeout. Freshness compromised.";
+        }
     }
 });

@@ -10,9 +10,7 @@
         content="Discover the ocean's finest treasures. Premium seafood delivered fresh from the sea to your table.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link 
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" 
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/seafood.css">
     <link rel="stylesheet" href="css/ad-banner.css">
@@ -143,23 +141,9 @@
         </div>
         <div class="parallax-content reveal-scale">
             
-            <!-- Vinyl Record Player -->
-            <div class="vinyl-player" id="vinylPlayer">
-                <div class="vinyl-wrapper" style="transform: scale(1.5); transform-origin: center;">
-                    <div class="vinyl-disc" id="vinylDisc" style="padding: 50px 0;">
-                        <div class="vinyl-label">
-                        </div>
-                        <div class="vinyl-grooves"></div>
-                    </div>
-                    <div class="tonearm"></div>
-                </div>
-                <audio id="bgAudio" loop>
-                    <source src="bg-audio.mp3" type="audio/mpeg">
-                </audio>
-            </div>
-            <blockquote class="seafood-quote">
-                "The taste of fresh seafood begins long before it arrives in the kitchen"
-            </blockquote>
+            <audio id="bgAudio" loop>
+                <source src="bg-audio.mp3" type="audio/mpeg">
+            </audio>
         </div>
     </section>
 
@@ -262,7 +246,7 @@
 
         <!-- Khối Quote trích dẫn (Góc phải dưới) -->
         <div class="quote-box">
-            <p>“Quảng Ninh is a nonstop 24-hour relay, crossing more than 300 kilometers through the night under a continuous oxygen supply system to preserve its freshness before reaching the dining table.”</p>
+            <p>“Quang Ninh is a nonstop 24-hour relay, crossing more than 300 kilometers through the night under a continuous oxygen supply system to preserve its freshness before reaching the dining table.”</p>
         </div>
     </div>
 </section>
@@ -285,7 +269,7 @@
 
             <!-- CHỮ TỰ SỰ -->
             <div class="narrative-text">
-                <p>As the city lights dim, fishermen in Quảng Ninh go on a 12-hour midnight journey. In the immensity of the dark, high-intensity halogen arrays pierce the shroud, acting as both navigational markers and siren calls to the deep's treasures.</p>
+                <p>As the city lights dim, fishermen in Quang Ninh go on a 12-hour midnight journey. In the immensity of the dark, high-intensity halogen arrays pierce the shroud, acting as both navigational markers and siren calls to the deep's treasures.</p>
             </div>
         </div>
 
@@ -389,6 +373,46 @@
     </div>
 
 </section> <!-- Kết thúc Phân cảnh 4 -->
+
+    <!-- Game -->
+     <section id="aeration-sync" class="story-slide dark-navy-theme">
+    <div class="cyber-terminal">
+        <div class="terminal-header">
+            <div>
+                <h3 class="system-title">AERATION PROTOCOL v2.0</h3>
+                <p class="system-sub">Load 10 units. AVOID RED THERMAL BOMBS!</p>
+            </div>
+            <div class="metrics">
+                <div class="metric-box">
+                    <span class="metric-label">STABILITY TIME</span>
+                    <span class="metric-value" id="cyber-time">15.0</span>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-label">LOAD PROGRESS</span>
+                    <span id="progress-bar-container"><div id="progress-fill"></div></span>
+                    <span class="metric-value" id="cyber-score">0/10</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="conveyor-container">
+            <div class="conveyor-belt"></div>
+            <div id="cyber-spawn-zone"></div>
+            <div class="scanner-laser"></div> 
+            
+            <div id="game-overlay" class="hidden">
+                <h2 id="overlay-title">MISSION SUCCESS</h2>
+                <p id="overlay-msg">Freshness preserved for transport.</p>
+                <button id="retry-btn" class="cyber-btn">REBOOT SYSTEM</button>
+            </div>
+        </div>
+
+        <div class="terminal-footer">
+            <button id="start-cyber-btn" class="cyber-btn">START SEQUENCE</button>
+        </div>
+    </div>
+</section>
+
     <!-- PHÂN CẢNH 5: HỆ THỐNG SỤC KHÍ VÀ LÀM LẠNH TRÊN XE TẢI -->
     <section id="mobile-lifeline" class="story-slide light-theme">
          <div class="lifeline-container">

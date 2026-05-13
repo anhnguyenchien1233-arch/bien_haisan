@@ -1564,7 +1564,7 @@
 }
 
 .main-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-size: 3.5rem; /* Chữ to hoành tráng */
     font-weight: 800; /* In đậm đanh thép */
     color: #ffffff; 
@@ -1940,7 +1940,7 @@
     left: 45%; 
     transform: translate(-50%, -50%);
     width: 75%; 
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-weight: 900;
     color: #0f364a;
     
@@ -1961,7 +1961,7 @@
 }
 
 .blob-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-weight: 900;
     color: #0f364a;
     font-size: 1.8rem;
@@ -2118,6 +2118,7 @@
    ========================================= */
 
 .light-theme {
+    background: linear-gradient(to bottom, #0a192f 0%, #fcfaf5 150px, #fcfaf5 100%);
     background-color: #fcf9f2; /* Màu nền kem nhạt dịu mắt */
     padding: 80px 40px 150px 40px; /* Chừa khoảng trống bên dưới cho sóng biển */
     position: relative;
@@ -2160,7 +2161,7 @@
 }
 
 .preservation-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.15rem;
     line-height: 1.6;
     color: #222;
@@ -2279,7 +2280,7 @@
 }
 
 .section-title {
-    font-family: 'Montserrat', sans-serif; /* Hoặc tương tự sans-serif khác của bạn */
+    font-family: 'Lora', serif; /* Hoặc tương tự sans-serif khác của bạn */
     font-weight: 700;
     font-size: 2.6rem;
     color: #fff;
@@ -2306,7 +2307,7 @@
 }
 
 .description-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.4rem;
     line-height: 1.6;
     color: #ffffff; /* Chữ màu trắng nổi bật trên nền xanh */
@@ -2366,7 +2367,7 @@
 
 /* Đoạn văn mở đầu */
 .intro-paragraph {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.5rem;
     line-height: 1.6;
     color: #222;
@@ -2410,7 +2411,7 @@
 }
 
 .tech-num {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 3.5rem;
     font-weight: 900;
     line-height: 1;
@@ -2418,7 +2419,7 @@
 }
 
 .tech-name {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1rem;
     font-weight: 800;
     line-height: 1.3;
@@ -2490,7 +2491,7 @@
 }
 
 .pulse-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 2.2rem;
     font-weight: 900;
     line-height: 1.3;
@@ -2499,7 +2500,7 @@
 }
 
 .pulse-description {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.3rem;
     line-height: 1.6;
     color: #e0e0e0; /* Trắng xám dịu mắt */
@@ -2608,7 +2609,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .technique-desc {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.4rem;
     line-height: 1.6;
     color: #ffffff;
@@ -2621,7 +2622,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .technique-list li {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.3rem;
     line-height: 1.6;
     color: #e0e0e0; /* Xám sáng nhẹ */
@@ -2711,7 +2712,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
     background: rgba(3, 18, 30, 0.85); /* Nền xanh biển trong suốt để dễ đọc chữ */
     color: #ffffff;
     padding: 12px 15px;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1rem;
     line-height: 1.4;
     text-align: center;
@@ -2739,7 +2740,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .vitality-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.35rem; /* Cỡ chữ vừa vặn dễ đọc */
     line-height: 1.6;
     color: #ffffff;
@@ -2910,7 +2911,8 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 
 .light-parallax-theme {
     /* Nền mờ ảo, bạn hãy thay bằng ảnh nền sáng màu nước của bạn */
-    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('anh_nen_nuoc_sang.jpg');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('../nen.jpg');
+    background: linear-gradient(to bottom, #0a192f 0%, #fcfaf5 150px, #fcfaf5 100%);
     background-attachment: fixed; /* Hiệu ứng cuộn lướt */
     background-size: cover;
     background-position: center;
@@ -2938,7 +2940,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .depth-title {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 3rem;
     font-weight: 900;
     line-height: 1.2;
@@ -2952,7 +2954,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .depth-description {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.6rem;
     line-height: 1.6;
     color: #2d3748;
@@ -3102,7 +3104,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 
 /* --- DÒNG CHÚ THÍCH (CAPTION) --- */
 #owner-quote .quote-caption {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.15rem;
     line-height: 1.6;
     color: #cbd5e1; /* Trắng xám nhạt */
@@ -3126,6 +3128,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
    ========================================= */
 
 .light-cream-theme {
+    background: linear-gradient(to bottom, #0a192f 0%, #fcfaf5 150px, #fcfaf5 100%);
     background-color: #fcfaf5; 
     padding: 100px 40px;
     display: flex;
@@ -3172,7 +3175,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .precision-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.45rem;
     line-height: 1.6;
     color: #16365b; 
@@ -3233,6 +3236,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 
 .light-cloud-theme {
     /* Phủ một lớp sương trắng mờ 60% lên trên ảnh mây để chữ không bị chìm */
+    background: linear-gradient(to bottom, #0a192f 0%, #fcfaf5 150px, #fcfaf5 100%);
     background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('../nen.jpg'); 
     background-color: #e3f2fd; 
     background-size: cover;
@@ -3282,7 +3286,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .journey-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lora', serif;
     font-size: 1.5rem;
     line-height: 1.6;
     color: #07294d; /* Màu chữ xanh navy đậm, chìm vào nền mây */
@@ -3338,3 +3342,224 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 .delay-1 { transition-delay: 0.1s; }
 .delay-2 { transition-delay: 0.3s; }
 .delay-3 { transition-delay: 0.5s; }
+/* =========================================
+   ÉP PHÔNG CHỮ TOÀN CẦU CHO CÁC PHẦN BỊ SÓT
+   ========================================= */
+
+/* 1. Ép tất cả các đoạn văn bản dài (thẻ p) dùng phông Lora cho dễ đọc */
+p {
+    font-family: 'Lora', serif !important;
+}
+
+/* 2. Ép các tiêu đề và con số (01, 02...) dùng phông Playfair Display cho sang trọng */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif !important;
+}
+
+/* 3. Dành riêng cho các thẻ span hoặc div chứa tiêu đề phụ (như chữ AERATION TRUCKS) */
+.title, .sub-title, .step-title, .number {
+    font-family: 'Playfair Display', serif !important;
+}
+/* =========================================
+   NÂNG CẤP GAME: AERATION SYNC TERMINAL
+   ========================================= */
+.cyber-terminal {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: rgba(10, 25, 47, 0.85); /* Xanh navy tối, kính mờ */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(100, 255, 218, 0.2); /* Viền màu Cyan nhạt */
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(100, 255, 218, 0.05);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+}
+
+.system-title {
+    color: #64ffda; /* Màu Cyan đặc trưng của công nghệ */
+    font-size: 1.8rem;
+    letter-spacing: 3px;
+    margin: 0 0 5px 0;
+}
+
+.system-sub {
+    color: #8892b0;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.metrics {
+    display: flex;
+    gap: 30px;
+}
+
+.metric-box {
+    text-align: right;
+}
+
+.metric-label {
+    display: block;
+    color: #8892b0;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+}
+
+.metric-value {
+    color: #e6f1ff;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* KHU VỰC BĂNG CHUYỀN */
+.conveyor-container {
+    position: relative;
+    height: 160px;
+    background: #020c1b;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: inset 0 5px 15px rgba(0,0,0,0.8);
+}
+
+/* Tạo sọc chuyển động cho băng chuyền */
+.conveyor-belt {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 30px;
+    background: repeating-linear-gradient(
+        -45deg,
+        #112240,
+        #112240 20px,
+        #0a192f 20px,
+        #0a192f 40px
+    );
+    animation: rollBelt 2s linear infinite;
+}
+
+@keyframes rollBelt {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Máy quét tia laser */
+.scanner-laser {
+    position: absolute;
+    right: 50px;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 100, 100, 0.8);
+    box-shadow: 0 0 15px rgba(255, 100, 100, 1);
+    z-index: 10;
+}
+
+/* THÙNG HÀNG CAO CẤP (CRYO-BOX) */
+.cryo-box {
+    position: absolute;
+    top: 25px;
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(100, 255, 218, 0.5);
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: crosshair;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 5;
+}
+
+/* Hiệu ứng khi lướt chuột qua */
+.cryo-box:hover {
+    background: rgba(100, 255, 218, 0.15);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.4);
+    transform: translateY(-5px);
+}
+
+/* NÚT BẤM CÔNG NGHỆ */
+.terminal-footer {
+    text-align: center;
+}
+
+.cyber-btn {
+    background: transparent;
+    color: #64ffda;
+    border: 1px solid #64ffda;
+    padding: 15px 40px;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cyber-btn:hover {
+    background: rgba(100, 255, 218, 0.1);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+/* THANH TIẾN TRÌNH (PROGRESS BAR) */
+#progress-bar-container {
+    display: inline-block;
+    width: 100px;
+    height: 8px;
+    background: #112240;
+    border-radius: 4px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+#progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #64ffda;
+    box-shadow: 0 0 10px #64ffda;
+    transition: width 0.3s ease;
+}
+
+/* THÙNG BOM (THERMAL BOMB) */
+.cryo-box.bomb {
+    border-color: #ff4d4d;
+    background: rgba(255, 77, 77, 0.1);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+}
+.cryo-box.bomb:hover {
+    background: rgba(255, 77, 77, 0.3);
+    box-shadow: 0 0 25px #ff4d4d;
+}
+
+/* LỚP PHỦ THÔNG BÁO */
+#game-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 12, 27, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+#game-overlay.hidden { opacity: 0; pointer-events: none; }
+#overlay-title { font-size: 3rem; letter-spacing: 5px; margin: 0; }
+.win-text { color: #64ffda; text-shadow: 0 0 20px #64ffda; }
+.lose-text { color: #ff4d4d; text-shadow: 0 0 20px #ff4d4d; }
+
+/* HIỆU ỨNG RUNG KHI SAI */
+.shake { animation: shake 0.4s ease; }
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
