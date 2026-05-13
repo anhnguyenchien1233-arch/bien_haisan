@@ -516,3 +516,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+// =========================================
+// TỰ ĐỘNG THÊM HIỆU ỨNG CHÚ THÍCH (GLASSMORPHISM CAPTION) - PHIÊN BẢN FULL
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // Đã gom TẤT CẢ các khu vực chứa ảnh dựa trên cấu trúc HTML của bạn
+    const targetSelectors = [
+        'img.character-img', 
+        'img.precision-img', 
+        '.journey-top-banner img', 
+        'img.oval-feast-img', 
+        '.scrap-img img',               // Scrapbook
+        '.edge-img img',                // Chuyến đi đêm (Vịnh Hạ Long, Cầu Bãi Cháy)
+        '.main-image-column img',       // Bảo quản hải sản (Tàu cá cập bến)
+        '.small-image-wrapper img',     // Bảo quản hải sản (Phân loại)
+        'img.logistics-img',            // Đội xe hậu cần
+        '.tech-images-column img',      // Hệ thống làm lạnh
+        '.pulse-gallery-column img',    // Nhịp đập đại dương (Chợ hải sản)
+        '.gallery-grid img'             // Hệ thống bể cá nhà hàng
+    ].join(', ');
+
+    const imagesToEnhance = document.querySelectorAll(targetSelectors);
+
+    imagesToEnhance.forEach(img => {
+        // LỚP PHÒNG THỦ: Tránh tuyệt đối thuyền hoạt họa và sóng biển
+        if (img.classList.contains('boat-on-waves') || img.src.includes('thuyen.png')) {
+            return; // Bỏ qua, không làm gì cả
+        }
+
+        // Lấy nội dung chú thích
+        const captionText = img.getAttribute('alt');
+        if (!captionText || captionText.trim() === '') return;
+
+        // Tránh tình trạng bọc 2 lần nếu trang web load lại
+        if (img.parentElement.classList.contains('image-caption-wrapper')) return;
+
+        // Tạo hộp chứa và bọc ảnh lại
+        const wrapper = document.createElement('div');
+        wrapper.className = 'image-caption-wrapper';
+
+        const captionDiv = document.createElement('div');
+        captionDiv.className = 'modern-caption';
+        captionDiv.innerText = captionText;
+
+        img.parentNode.insertBefore(wrapper, img);
+        wrapper.appendChild(img);
+        wrapper.appendChild(captionDiv);
+    });
+});

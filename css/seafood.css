@@ -609,7 +609,7 @@
 /* Parallax Divider */
 .parallax-divider {
     position: relative;
-    min-height: 500px;
+    min-height: 20vh;
     background: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=2560&q=90') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
@@ -3562,4 +3562,81 @@ h1, h2, h3, h4, h5, h6 {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-10px); }
     75% { transform: translateX(10px); }
+}
+/* =========================================
+   SỬA LỖI BỐ CỤC: HIỆU ỨNG CHÚ THÍCH ẢNH 
+   ========================================= */
+
+/* 1. Hộp chứa tổng */
+.image-caption-wrapper {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    
+    /* SỬA LỖI MẤT ẢNH & XÊ DỊCH: Ép cái hộp phải có kích thước vừa khít với lưới Grid/Flex của bạn */
+    width: 100%;
+    height: 100%;
+    display: flex; /* Tránh khoảng trống kỳ cục dưới đáy ảnh */
+    
+    /* ĐÃ XÓA bỏ border-radius 16px và box-shadow để không sinh ra các khung trắng thừa thãi ở Scrapbook */
+    border-radius: inherit; /* Tự động bo góc theo đúng thiết kế gốc của bạn */
+}
+
+/* 2. Bức ảnh bên trong */
+.image-caption-wrapper img {
+    width: 100%;
+    /* SỬA LỖI TE0 ẢNH: Để ảnh tự quyết định chiều cao hoặc lấp đầy hộp */
+    height: 100%; 
+    min-height: 100%; 
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    border-radius: inherit; 
+}
+
+/* 3. Khối chú thích (Thiết kế TỐI GIẢN - KHÔNG NỀN) */
+.modern-caption {
+    position: absolute;
+    bottom: 20px; /* Cách đáy một chút cho đẹp */
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    
+    /* XÓA BỎ NỀN KÍNH MỜ */
+    background: transparent; 
+    backdrop-filter: none; 
+    -webkit-backdrop-filter: none;
+    
+    color: #ffffff;
+    font-family: 'Lora', serif; 
+    font-size: 1.1rem;
+    text-align: center;
+    line-height: 1.5;
+    margin: 0;
+    
+    /* CHÌA KHÓA: Bóng đổ chữ giúp dễ đọc trên mọi bức ảnh */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 15px rgba(0,0,0,0.6);
+    
+    /* Hiệu ứng ẩn: Cho chữ trong suốt và tụt nhẹ xuống dưới 20px */
+    opacity: 0;
+    transform: translateY(20px); 
+    transition: all 0.4s ease;
+}
+
+/* --- KHI LƯỚT CHUỘT VÀO HỘP CHỨA --- */
+
+/* 1. Ảnh hơi phóng to và TỐI LẠI một chút để làm nổi bật chữ */
+.image-caption-wrapper img {
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.image-caption-wrapper:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.65); /* Làm tối ảnh đi 35% */
+}
+
+/* 2. Khối chữ mượt mà hiện rõ lên và trượt vào vị trí cũ */
+.image-caption-wrapper:hover .modern-caption {
+    opacity: 1;
+    transform: translateY(0);
 }
