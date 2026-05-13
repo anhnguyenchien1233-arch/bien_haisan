@@ -1537,1283 +1537,1804 @@
         height: 300px;
     }
 }
-
-/* Games Section */
-.games-section {
-    padding: 100px 0;
-    background: linear-gradient(135deg, #0a1628 0%, #1a3a5c 100%);
-}
-
-.games-section .section-tag,
-.games-section .section-title {
-    color: white;
-}
-
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    margin-top: 50px;
-}
-
-.game-card {
-    background: white;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-
-.game-wrapper {
-    padding: 30px;
-    text-align: center;
-}
-
-.game-wrapper h3 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-}
-
-.game-wrapper p {
-    color: #666;
-    margin-bottom: 20px;
-}
-
-.game-area {
+/* =========================================
+   HIỆU ỨNG CHỮ BÓNG MỜ (Đã ép căn giữa + Phông chữ mới)
+   ========================================= */
+.hero-content {
+    /* Đảm bảo toàn bộ khu vực (chữ + nút) được căn giữa mượt mà */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     position: relative;
-    height: 300px;
-    background: linear-gradient(180deg, #87CEEB 0%, #1E90FF 50%, #006994 100%);
-    border-radius: 15px;
-    overflow: hidden;
+    z-index: 10; 
 }
 
-.game-score, .game-timer {
+.title-wrapper {
+    /* Ép khối chữ nằm chính giữa */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+    
+    margin-top: 60px; 
+    margin-bottom: 50px; /* Khoảng cách từ chữ xuống nút Explore */
+}
+
+.main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem; /* Chữ to hoành tráng */
+    font-weight: 800; /* In đậm đanh thép */
+    color: #ffffff; 
+    text-transform: uppercase; 
+    line-height: 1.3;
+    
+    /* Căn giữa và ép xuống dòng */
+    text-align: center;
+    max-width: 1000px; /* Khóa độ rộng để ngắt dòng đẹp */
+    margin: 0 auto; 
+    padding: 0 20px; 
+    white-space: normal; /* XÓA BỎ NOWRAP CŨ ĐỂ CHỮ ĐƯỢC XUỐNG DÒNG */
+    
+    /* Hiệu ứng bóng đổ kép cực ngầu */
+    text-shadow: 
+        3px 5px 10px rgba(0, 0, 0, 0.7),   
+        0px 0px 25px rgba(0, 0, 0, 0.5);   
+    
+    position: relative;
+    z-index: 10; 
+}
+
+/* Thu nhỏ lại một chút khi xem trên điện thoại */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.2rem;
+        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.8); 
+    }
+}
+
+.reflected-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 5.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7); 
+    margin: 0;
+    white-space: nowrap;
+    filter: blur(1.5px); 
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 90%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 90%);
+    
+    /* Căn giữa tuyệt đối cho cái bóng */
     position: absolute;
-    top: 10px;
-    color: white;
-    font-weight: 600;
-    font-size: 1.1rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-}
-
-.game-score { left: 15px; }
-.game-timer { right: 15px; }
-
-.game-targets {
-    position: absolute;
-    inset: 50px 10px 10px;
-}
-
-.fish-item {
-    position: absolute;
-    font-size: 2.5rem;
-    cursor: pointer;
-    transition: transform 0.1s;
-    animation: swim 2s ease-in-out infinite;
-}
-
-.fish-item:hover {
-    transform: scale(1.2);
-}
-
-@keyframes swim {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    50% { transform: translateX(20px) rotate(5deg); }
-}
-
-.game-btn {
-    position: absolute;
-    bottom: 15px;
+    top: 100%;
     left: 50%;
-    transform: translateX(-50%);
-    padding: 12px 30px;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
+    transform: translateX(-50%) rotateX(180deg);
+    margin-top: -15px; 
+    z-index: 1;
+    pointer-events: none; 
 }
 
-.game-btn:hover {
-    background: var(--primary-color);
-    transform: translateX(-50%) scale(1.05);
+/* =========================================
+   HIỆU ỨNG XOAY ĐĨA NHẠC
+   ========================================= */
+@keyframes spinDisc {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* Cooking Game */
-.cooking-area {
-    background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
+.spinning-active {
+    animation: spinDisc 4s linear infinite;
+    /* Đảm bảo đĩa quay quanh tâm */
+    transform-origin: center center !important; 
+}
+/* =========================================
+   HIỆU ỨNG TƯƠNG TÁC (HOVER) CHO ẢNH
+   ========================================= */
+
+.img-wrapper:hover {
+    /* Khung ảnh khẽ nhấc lên 10px và phóng to 2% */
+    transform: translateY(-10px) scale(1.02); 
+    
+    /* Bóng đổ đậm hơn, vươn dài ra và thêm một dải sáng lờ mờ xung quanh viền */
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.1); 
+    
+    /* Đảm bảo bức ảnh đang được tương tác sẽ nổi lên trên cùng, không bị ảnh khác đè */
+    z-index: 10; 
 }
 
-.cooking-pot {
-    width: 150px;
-    height: 100px;
-    background: linear-gradient(180deg, #4a4a4a 0%, #2d2d2d 100%);
-    border-radius: 0 0 50% 50%;
-    margin: 30px auto 20px;
+/* Hiệu ứng thị giác: Bức ảnh bên trong lún sâu/phóng to thêm một chút khi khung nổi lên */
+.img-wrapper:hover img {
+    transform: scale(1.08); 
+}
+/* =========================================
+   PHẦN 2: GIAO DIỆN NHẬT KÝ (SCRAPBOOK)
+   ========================================= */
+#scrapbook-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #d6f0fa; /* Xanh biển nhạt mát rượi, dịu mắt */
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 4px solid #333;
-    transition: all 0.3s;
+    padding: 20px;
 }
 
-.cooking-pot.drag-over {
-    background: linear-gradient(180deg, #ff6b35 0%, #e74c3c 100%);
-    transform: scale(1.1);
-}
-
-.cooking-pot span {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.9rem;
-}
-
-.ingredients {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-bottom: 15px;
-}
-
-.ingredient {
-    padding: 10px 15px;
-    background: white;
-    border-radius: 10px;
-    cursor: grab;
-    font-size: 1.5rem;
-    transition: all 0.3s;
-    user-select: none;
-}
-
-.ingredient:hover {
-    transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.ingredient.dragging {
-    opacity: 0.5;
-}
-
-.dish-result {
-    min-height: 50px;
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.dish-result span {
-    display: block;
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.7);
-    margin-top: 5px;
-}
-
-@media (max-width: 768px) {
-    .games-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .float-image {
-        display: none;
-    }
-    
-    .seafood-hero {
-        min-height: auto;
-        padding: 100px 20px 60px;
-    }
-    
-    .stacked-images {
-        height: 350px;
-    }
-    
-    .image-stack {
-        width: 300px;
-        height: 330px;
-    }
-    
-    .stack-1 {
-        width: 220px;
-        height: 280px;
-    }
-    
-    .stack-2 {
-        width: 200px;
-        height: 250px;
-        left: 50px;
-    }
-    
-    .stack-3 {
-        width: 180px;
-        height: 220px;
-        left: 110px;
-    }
-    
-    .collection-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .collection-card.large,
-    .collection-card.wide {
-        grid-column: span 1;
-    }
-    
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .seafood-quote {
-        font-size: 1.8rem;
-    }
-    
-    .recipe-stack {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .recipe-card {
-        max-width: 100%;
-    }
-    
-    .parallax-bottom h2 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-title {
-        font-size: 2rem;
-    }
-    
-    .overlapping-images {
-        height: 400px;
-    }
-    
-    .overlap-item.main-img {
-        width: 260px;
-        height: 340px;
-    }
-    
-    .overlap-item.secondary-img {
-        width: 200px;
-        height: 240px;
-    }
-    
-    .overlap-item.accent-badge {
-        width: 100px;
-        height: 100px;
-        right: 0;
-    }
-    
-    .overlap-item.accent-badge span {
-        font-size: 0.8rem;
-    }
-    
-    .story-stats {
-        flex-direction: column;
-        gap: 30px;
-    }
-    
-    .intro-line {
-        font-size: 2.5rem;
-    }
-    
-    .enter-btn {
-        padding: 15px 40px;
-        font-size: 1rem;
-    }
-}
-
-/* ==========================================
-   GAMES SECTION
-   ========================================== */
-/* ==========================================
-   GAMES SECTION - REFINED
-   ========================================== */
-.games-section {
-    position: relative;
-    padding: 120px 0;
-    background-image: url('https://cdn-i.doisongphapluat.com.vn/476/2019/3/11/dai-duong-doi-mau1.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-.games-section::before {
-    content: '';
+/* Thanh màu gradient trang trí bên trái giống Canva */
+.decor-bar-left {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.8);
-    z-index: 0;
+    top: 15%;
+    left: 8%;
+    width: 40px;
+    height: 35%;
+    background: linear-gradient(to bottom, #1931a3, #00d4ff);
+    z-index: 1;
 }
 
-.games-section .container {
+/* Khung lưới ảo để định vị các bức ảnh */
+.scrapbook-container {
     position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 85vh;
     z-index: 2;
 }
 
-.games-section .section-title,
-.games-section .section-desc,
-.games-section .section-tag {
-    color: #000 !important;
-}
-
-.games-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 50px;
-}
-
-.game-card {
-    background: #ffffff;
-    border-radius: 32px;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04), 0 20px 80px rgba(0, 0, 0, 0.02);
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.game-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.08);
-}
-
-.game-header {
-    background: linear-gradient(135deg, #0077b6, #00b4d8);
-    padding: 30px 40px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.game-header .game-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(5px);
-    border-radius: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.game-header .game-icon svg {
-    width: 30px;
-    height: 30px;
-    color: white;
-}
-
-.game-header h3 {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
-    color: white;
-    margin: 0;
-    letter-spacing: 0.5px;
-}
-
-/* Fishing Game Styles */
-.fishing-game {
-    padding: 30px;
-}
-
-.ocean-area {
-    position: relative;
-    height: 320px;
-    background: linear-gradient(180deg, #caf0f8 0%, #90e0ef 20%, #00b4d8 60%, #0077b6 100%);
-    border-radius: 24px;
-    overflow: hidden;
-    margin-bottom: 30px;
-    box-shadow: inset 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.water-surface {
+/* --- Định dạng chung cho các ảnh dán --- */
+.scrap-img {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
-    animation: waveSurface 3s ease-in-out infinite;
-}
-
-@keyframes waveSurface {
-    0%, 100% { transform: translateY(0); opacity: 0.6; }
-    50% { transform: translateY(5px); opacity: 0.3; }
-}
-
-.underwater-area {
-    position: absolute;
-    top: 40px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-}
-
-.seaweed {
-    position: absolute;
-    bottom: -10px;
-    width: 24px;
-    height: 100px;
-    background: linear-gradient(to top, #2d6a4f, #52b788);
-    border-radius: 12px 12px 0 0;
-    animation: sway 4s ease-in-out infinite;
-    transform-origin: bottom center;
-}
-
-.seaweed-1 { left: 15%; height: 80px; animation-delay: 0s; }
-.seaweed-2 { left: 35%; height: 110px; animation-delay: 0.7s; }
-.seaweed-3 { left: 85%; height: 90px; animation-delay: 1.4s; }
-
-@keyframes sway {
-    0%, 100% { transform: rotate(-8deg); }
-    50% { transform: rotate(8deg); }
-}
-
-.fish {
-    position: absolute;
-    width: 54px;
-    height: 34px;
+    border: 8px solid #ffffff; /* Viền trắng dày như ảnh rửa Polaroid */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+    
+    /* Hiệu ứng nổi lên khi di chuột */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
-    z-index: 5;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
 }
 
-.fish-points {
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #000;
-    color: white;
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    opacity: 0;
-    transition: all 0.3s ease;
+/* Khi lướt chuột, ảnh nổi hẳn lên trên cùng */
+.scrap-img:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 20 !important; /* Đảm bảo không bị ảnh khác che mất */
 }
 
-.fish:hover .fish-points {
-    opacity: 1;
-    top: -30px;
-}
-
-.fish-1 { top: 15%; animation: swimRight 8s linear infinite; }
-.fish-2 { top: 30%; animation: swimLeft 10s linear infinite; }
-.fish-3 { top: 45%; animation: swimRight 12s linear infinite; }
-.fish-4 { top: 60%; animation: swimLeft 9s linear infinite; }
-.fish-5 { top: 75%; animation: swimRight 11s linear infinite; }
-.fish-6 { top: 40%; animation: swimLeft 13s linear infinite; }
-
-.shrimp {
-    position: absolute;
-    width: 44px;
-    height: 28px;
-    cursor: pointer;
-    z-index: 5;
-    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-}
-
-.shrimp-1 { top: 25%; animation: swimLeft 6s linear infinite; }
-.shrimp-2 { top: 65%; animation: swimRight 7s linear infinite; }
-
-.crab {
-    position: absolute;
-    width: 44px;
-    height: 32px;
-    bottom: 10%;
-    cursor: pointer;
-    z-index: 5;
-    animation: crabWalk 6s ease-in-out infinite;
-}
-
-.crab-1 { left: 10%; }
-.crab-2 { left: 60%; animation-delay: 2s; }
-
-.octopus {
-    position: absolute;
-    width: 54px;
-    height: 54px;
-    bottom: 25%;
-    right: 15%;
-    cursor: pointer;
-    z-index: 5;
-    animation: octopusFloat 4s ease-in-out infinite;
-}
-
-@keyframes swimRight {
-    0% { left: -100px; transform: scaleX(1); }
-    100% { left: 100%; transform: scaleX(1); }
-}
-
-@keyframes swimLeft {
-    0% { left: 100%; transform: scaleX(-1); }
-    100% { left: -100px; transform: scaleX(-1); }
-}
-
-@keyframes crabWalk {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(50px); }
-}
-
-@keyframes octopusFloat {
-    0%, 100% { transform: translateY(0) rotate(-10deg); }
-    50% { transform: translateY(-15px) rotate(10deg); }
-}
-
-.fishing-line-container {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-}
-
-.fishing-line {
-    width: 2px;
-    height: 0;
-    background: #4a3728;
-    margin-left: -1px;
-    transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.fishing-line.cast {
-    height: 160px;
-}
-
-.hook {
-    width: 24px;
-    height: 36px;
-    border: 3px solid #4a3728;
-    border-top: none;
-    border-radius: 0 0 12px 12px;
-    margin-left: -13px;
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.hook.cast {
-    opacity: 1;
-    animation: hookBounce 1.5s ease-in-out infinite;
-}
-
-@keyframes hookBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
-}
-
-/* Cooking Game Styles */
-.cooking-game {
-    padding: 30px;
-}
-
-.cooking-area {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.recipe-selector h4 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #888;
-    margin-bottom: 15px;
-}
-
-.recipe-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-}
-
-.recipe-btn {
-    padding: 10px 20px;
-    background: #f8f9fa;
-    border: 1px solid #eee;
-    border-radius: 16px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #444;
-    transition: all 0.3s ease;
-}
-
-.recipe-btn.active {
-    background: #0077b6;
-    color: white;
-    border-color: #0077b6;
-    box-shadow: 0 8px 20px rgba(0, 119, 182, 0.2);
-}
-
-.cooking-board {
-    display: grid;
-    grid-template-columns: 1fr 220px;
-    gap: 25px;
-}
-
-.ingredients-area {
-    background: #fdfdfd;
-    border: 1px solid #f0f0f0;
-    padding: 20px;
-    border-radius: 24px;
-}
-
-.ingredients-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-}
-
-.ingredient-item {
-    background: white;
-    padding: 12px;
-    border-radius: 18px;
-    text-align: center;
-    border: 1px solid #f0f0f0;
-    transition: all 0.3s ease;
-}
-
-.ingredient-item:hover {
-    border-color: #0077b6;
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-}
-
-.ingredient-item.selected {
-    background: #eef9ff;
-    border-color: #0077b6;
-}
-
-.ingredient-item span {
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-top: 8px;
-    display: block;
-    color: #555;
-}
-
-.cooking-pot {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #f8f9fa;
-    border-radius: 24px;
-    padding: 20px;
-}
-
-.pot-body {
-    width: 120px;
-    height: 80px;
-    background: linear-gradient(135deg, #333, #111);
-    border-radius: 8px 8px 60px 60px;
-    position: relative;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-.pot-contents {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    right: 8px;
-    height: 0;
-    background: linear-gradient(180deg, #ff9e00, #ff6d00);
-    border-radius: 0 0 50px 50px;
-    transition: height 0.6s ease;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-end;
-    justify-content: center;
-    gap: 4px;
-    padding: 8px;
-}
-
-.pot-contents.active { height: 60px; }
-
-.dish-result {
-    background: #ffffff;
-    border: 1px solid #f0f0f0;
-    padding: 20px;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    min-height: 100px;
-}
-
-.dish-visual {
-    width: 70px;
-    height: 70px;
-    background: #f0f9ff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-}
-
-.dish-visual.completed {
-    background: #0077b6;
-    color: white;
-    box-shadow: 0 10px 25px rgba(0, 119, 182, 0.2);
-}
-
-.dish-info h4 {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    margin-bottom: 4px;
-    color: #222;
-}
-
-.game-controls {
-    background: #fdfdfd;
-    border-top: 1px solid #f5f5f5;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.score-display {
-    text-align: center;
-}
-
-.score-value {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: #0077b6;
-    display: block;
-}
-
-.controls-row {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-.game-btn {
-    padding: 14px 30px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.game-btn:hover:not(:disabled) {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.game-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-
-#castBtn { background: #0077b6; color: white; }
-#catchBtn { background: #2d6a4f; color: white; }
-#cookBtn { background: #ff6d00; color: white; }
-#resetBtn { background: #f1f3f5; color: #495057; }
-
-.recipe-hint {
-    background: #fff9db;
-    border: 1px solid #fff3bf;
-    padding: 15px;
-    border-radius: 18px;
-    font-size: 0.9rem;
-    color: #856404;
-    text-align: center;
-}
-
-@media (max-width: 1024px) {
-    .games-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 600px) {
-    .cooking-board { grid-template-columns: 1fr; }
-    .ingredients-grid { grid-template-columns: repeat(3, 1fr); }
-    .game-header { padding: 20px; }
-}
-
-.dish-info {
-    flex: 1;
-}
-
-.dish-info h4 {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    margin-bottom: 5px;
-}
-
-.dish-info p {
-    font-size: 0.85rem;
-    color: var(--gray-medium);
-    margin-bottom: 5px;
-}
-
-.dish-rating {
-    color: #ffc107;
-    font-size: 1rem;
-}
-
-/* Game Controls */
-.game-controls {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 15px;
-}
-
-.score-display {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 15px;
-    justify-content: center;
-}
-
-.score-label {
-    font-size: 1rem;
-    color: var(--gray-medium);
-}
-
-.score-value {
-    font-family: var(--font-serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--accent-color);
-}
-
-.controls-row {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 15px;
-}
-
-.game-btn {
-    padding: 12px 25px;
-    background: var(--accent-color);
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.game-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 20px rgba(0, 119, 182, 0.3);
-}
-
-.game-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.game-btn.catch-btn {
-    background: #28a745;
-}
-
-.game-btn.catch-btn:not(:disabled):hover {
-    box-shadow: 0 5px 20px rgba(40, 167, 69, 0.3);
-}
-
-.game-btn.cook-btn {
-    background: #FF6B35;
-}
-
-.game-btn.cook-btn:not(:disabled):hover {
-    box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
-}
-
-.game-btn.reset-btn {
-    background: #6c757d;
-}
-
-.btn-icon {
-    font-size: 1.1rem;
-}
-
-.caught-display {
-    text-align: center;
-}
-
-.caught-label {
-    font-size: 0.85rem;
-    color: var(--gray-medium);
-    display: block;
-    margin-bottom: 8px;
-}
-
-.caught-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-    min-height: 30px;
-}
-
-.caught-item {
-    background: white;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    animation: popIn 0.3s ease;
-}
-
-@keyframes popIn {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
-}
-
-.caught-item svg {
-    width: 20px;
-    height: 12px;
-}
-
-/* Cooking Game Specific Controls */
-.cooking-controls {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.selected-ingredients {
-    text-align: center;
-}
-
-.sel-label {
-    font-size: 0.85rem;
-    color: var(--gray-medium);
-    display: block;
-    margin-bottom: 8px;
-}
-
-.sel-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: center;
-    min-height: 30px;
-}
-
-.sel-item {
-    background: var(--accent-color);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    animation: popIn 0.3s ease;
-}
-
-.recipe-hint {
-    background: rgba(255, 193, 7, 0.1);
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-size: 0.85rem;
-    text-align: center;
-    color: #856404;
-}
-
-.recipe-hint strong {
-    color: #856404;
-}
-
-/* Responsive for Games */
-@media (max-width: 992px) {
-    .games-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 768px) {
-    .cooking-board {
-        grid-template-columns: 1fr;
-    }
-    
-    .ingredients-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .cooking-pot {
-        flex-direction: row;
-        justify-content: center;
-    }
-    
-    .pot-visual {
-        width: 100px;
-        height: 80px;
-    }
-    
-    .pot-body {
-        width: 80px;
-        height: 55px;
-    }
-    
-    .ocean-area {
-        height: 220px;
-    }
-    
-    .fishing-line.cast {
-        height: 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    .ingredients-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .recipe-buttons {
-        flex-direction: column;
-    }
-    
-    .recipe-btn {
-        width: 100%;
-    }
-    
-    .game-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-    }
-}
-
-/* ==========================================
-   3RD PARTY GAMES IFRAME STYLES
-   ========================================== */
-.game-wrapper {
-    padding: 25px;
-    position: relative;
-}
-
-.game-preview {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    border-radius: 20px;
-    overflow: hidden;
-    background: #000;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.game-preview:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
-}
-
-.game-preview img {
-    position: absolute;
-    top: 0;
-    left: 0;
+/* Hình ảnh bên trong lấp đầy viền */
+.scrap-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.6;
-    transition: all 0.3s ease;
 }
 
-.game-preview:hover img {
-    opacity: 0.4;
-    scale: 1.05;
+/* --- Vị trí cụ thể của từng ảnh --- */
+.img-boat {
+    top: 15%;
+    left: 15%;
+    width: 45%;
+    height: 40%;
+    z-index: 3;
 }
 
-.play-overlay {
+.img-food {
+    top: 5%;
+    right: 5%;
+    width: 25%;
+    height: 45%;
+    z-index: 2;
+}
+
+.img-squid {
+    bottom: 5%;
+    left: 5%;
+    width: 30%;
+    height: 45%;
+    z-index: 4;
+}
+
+/* --- Khối Trích dẫn (Quote) --- */
+.quote-box {
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+    width: 55%;
+    background-color: #bde4f5; /* Xanh lơ nhạt */
+    padding: 35px 45px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    z-index: 5;
+    
+    /* Tạo hiệu ứng bong bóng nước mờ mờ chìm dưới chữ */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6) 15px, transparent 16px),
+        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.5) 25px, transparent 26px),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 35px, transparent 36px);
+}
+
+.quote-box p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #000000;
+    line-height: 1.6;
+    margin: 0;
+    text-align: justify;
+}
+/* =========================================
+   ĐỊNH VỊ CÁC ELEMENT TRANG TRÍ (SCRAPBOOK)
+   ========================================= */
+.decor-element {
+    position: absolute;
+    z-index: 1; /* Nằm dưới các bức ảnh nhưng trên nền xanh ngọc */
+    pointer-events: none; /* Không cản trở việc click chuột của người dùng */
+}
+/* Mảng sóng xếp lớp góc trái trên */
+.solid-waves-top-left {
+    top: -2px; /* Kéo nhích lên trên một xíu để lấp kín viền hở (nếu có) */
+    left: 0;
+    width: 45%; /* Kéo dài để giao nhau với 65% của khối xanh đậm */
+    height: 220px; 
+    z-index: 1; /* CỰC KỲ QUAN TRỌNG: Lớn hơn z-index của block-top-dark để sóng nằm đè lên */
+    filter: drop-shadow(3px 5px 10px rgba(0,0,0,0.15)); /* Đổ bóng nhẹ lên khối xanh cho thật */
+}
+
+/* Đàn cá bơi lội */
+.decor-fishes {
+    top: 20px;
+    left: 30%; /* Nằm ở giữa phía trên */
+    width: 300px;
+    /* Thêm hiệu ứng trôi nhẹ bồng bềnh cho đàn cá */
+    animation: floatFish 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatFish {
+    0% { transform: translateY(0px) translateX(0px); }
+    100% { transform: translateY(-10px) translateX(15px); }
+}
+
+/* Bọt biển góc phải trên */
+.decor-bubbles {
+    top: -30px;
+    right: -20px;
+    width: 250px;
+}
+
+/* Cụm san hô góc trái dưới */
+.decor-coral {
+    bottom: -20px; /* Hạ thấp xuống một chút để cắt viền cho tự nhiên */
+    left: -10px;
+    width: 250px; /* Tăng từ 200px lên 250px cho cụm san hô xòe to hơn */
+}
+
+/* =========================================
+   LÀM ĐẸP CHO KHỐI QUOTE CHỮ (Trích dẫn)
+   ========================================= */
+/* Cập nhật lại class .quote-box hiện tại của bạn bằng đoạn này */
+.quote-box {
+    position: absolute;
+    bottom: 8%;
+    right: 5%;
+    width: 55%;
+    background-color: #bde4f5; /* Xanh lơ nhạt */
+    padding: 40px 50px;
+    z-index: 5;
+    
+    /* Tạo hoạ tiết bong bóng chìm BÊN TRONG hộp chữ giống Canva */
+    background-image: 
+        radial-gradient(circle at 15% 30%, rgba(255,255,255,0.7) 20px, transparent 21px),
+        radial-gradient(circle at 85% 70%, rgba(255,255,255,0.5) 35px, transparent 36px),
+        radial-gradient(circle at 50% 85%, rgba(255,255,255,0.6) 25px, transparent 26px),
+        radial-gradient(circle at 75% 20%, rgba(255,255,255,0.4) 15px, transparent 16px);
+}
+
+.quote-box p {
+    font-family: 'Playfair Display', serif; /* Dùng font chữ có chân sẽ nghệ thuật hơn Segoe UI */
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #000000;
+    line-height: 1.7;
+    margin: 0;
+    text-align: justify;
+    position: relative;
+    z-index: 2; /* Nổi chữ lên trên họa tiết bong bóng */
+}
+/* =========================================
+   CÁC MẢNG MÀU NỀN CẮT GHÉP (CANVA STYLE)
+   ========================================= */
+#scrapbook-section {
+    background-color: #f4fcff; /* Đổi màu nền cả trang thành trắng xanh siêu nhạt cho nổi các mảng màu */
+}
+
+.canva-block {
+    position: absolute;
+    z-index: 0; /* Cho nằm sát đáy màn hình để không đè lên ảnh */
+}
+
+/* 1. Mảng ngang màu xanh navy đậm ở trên cùng chứa đàn cá */
+.block-top-dark {
+    top: 0;
+    right: 0;
+    width: 65%; /* Đủ dài để vươn sang trái */
+    height: 38%;
+    background-color: #1a368c; 
+    z-index: 0; /* Nằm dưới cùng */
+}
+
+/* 2. Dải màu dọc gradient bên trái */
+.block-left-gradient {
+    top: 25%;
+    left: 10%;
+    width: 60px; 
+    height: 35%;
+    background: linear-gradient(to bottom, #1023a1, #00e5ff);
+    z-index: 0;
+}
+/* =========================================
+   PHÂN CẢNH: CHUYẾN ĐI ĐÊM (SPLIT SCREEN)
+   ========================================= */
+#night-fishing-journey {
+    background-color: #2b4554; /* Màu nền xanh rêu/teal đậm lót dưới ảnh */
+}
+
+.split-layout {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Khóa chặt chiều cao bằng đúng 1 màn hình */
+    overflow: hidden; /* Ngăn không cho bất cứ thứ gì tràn ra ngoài */
+}
+
+/* --- CỘT TRÁI (CHỮ & ĐỒ HỌA) --- */
+.split-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    /* 1. KÉO MẢNG XANH ÁP SÁT LỀ TRÊN: Đổi padding top thành 0 */
+    padding: 0 50px 40px 50px !important;
+    position: relative;
+    
+    /* 2. KHÔI PHỤC ẢNH NỀN SỨA BIỂN */
+    background-image: url('../nen.jpg'); /* Nhớ kiểm tra lại xem tên ảnh này đúng với file của bạn chưa nhé */
+    background-size: cover;
+    background-position: center;
+}
+/* 3. KHÔI PHỤC LỚP PHỦ SƯƠNG ĐEN (Để chữ tự sự không bị chìm vào ảnh nền) */
+.dark-overlay-left {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(4, 15, 25, 0.7); /* Lớp sương đen mờ */
+    z-index: 1;
+}
+/* Đảm bảo khung đồ họa luôn nổi bật và giới hạn kích thước */
+.title-graphic-container {
+    position: relative;
+    z-index: 5;
+    
+    /* Ép khung to hơn mức bình thường của cột trái */
+    width: 115%; 
+    
+    /* Kéo lùi sang trái một chút để ảnh vẫn nằm giữa dù bị phóng to */
+    margin-left: -7.5%; 
+    
+    /* Tăng giới hạn khổng lồ để mảng xanh bung xõa hết cỡ */
+    max-width: 750px; 
+    
+    margin-top: -10px; /* Nhích sát lên trần */
+}
+
+.canva-bg-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+}
+
+.canva-overlay-text {
+    position: absolute;
+    top: 35%; 
+    left: 45%; 
+    transform: translate(-50%, -50%);
+    width: 75%; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: #0f364a;
+    
+    /* TĂNG CỠ CHỮ LÊN MỨC HOÀNH TRÁNG (Tùy chỉnh: 2rem, 2.2rem, hoặc 2.4rem) */
+    font-size: 2.2rem; 
+    
+    line-height: 1.3;
+    text-align: center;
+    margin: 0;
+}
+
+/* --- Khối Tiêu đề (Blob) --- */
+.title-blob-wrapper {
     position: relative;
     z-index: 2;
+    margin-top: 20px;
+    align-self: flex-start;
+}
+
+.blob-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    color: #0f364a;
+    font-size: 1.8rem;
+    line-height: 1.4;
+    margin: 0;
     text-align: center;
 }
+/* --- Đoạn văn bản tự sự --- */
+.narrative-text {
+    position: relative;
+    z-index: 5; 
+    
+    /* 1. THAY ĐỔI Ở ĐÂY: Dùng auto để tự động đẩy khối này xuống dưới, cách xa cụm tiêu đề */
+    margin-top: auto; 
+    
+    /* 2. THÊM DÒNG NÀY: Để nó không bị tụt hẳn xuống chạm mép đáy màn hình (chỗ có sóng biển) */
+    margin-bottom: 15%; 
+    
+    /* --- Giữ nguyên toàn bộ hiệu ứng kính mờ cực đẹp của bạn ở dưới --- */
+    background: rgba(15, 54, 74, 0.4); 
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
+    padding: 25px 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15); 
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
 
-.play-icon-circle {
-    width: 80px;
-    height: 80px;
-    background: var(--accent-color, #0077b6);
-    border-radius: 50%;
+.narrative-text p {
+    font-size: 1.25rem; /* Cỡ chữ vừa đọc */
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: none; /* Đã có nền kính nên không cần bóng chữ nữa */
+}
+
+/* --- CỘT PHẢI: 3 Ảnh xếp ngang lấp đầy --- */
+.split-right {
+    width: 50%;
+    height: 100vh; /* Bắt buộc cột phải cũng chỉ cao bằng đúng 1 màn hình */
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px;
-    color: white;
-    font-size: 2rem;
-    box-shadow: 0 0 20px rgba(0, 119, 182, 0.5);
-    transition: all 0.3s ease;
+    flex-direction: column;
 }
 
-.game-preview:hover .play-icon-circle {
-    transform: scale(1.1);
-    background: #00b4d8;
+.edge-img {
+    flex: 1; /* Ép chia chính xác thành 3 phần bằng nhau */
+    width: 100%;
+    position: relative; /* Bắt buộc để làm mốc tọa độ cho ảnh */
+    overflow: hidden; /* Cắt phăng mọi phần ảnh thừa phá bĩnh */
+    border-radius: 0 !important;
 }
 
-.play-text {
-    color: white;
-    font-weight: 600;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-/* Fullscreen Modal */
-.game-modal {
-    position: fixed;
+/* Phép màu nằm ở đây: Ép ảnh phải ngoan ngoãn nằm trong khung 1/3 */
+.edge-img img {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 10000;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    object-fit: cover; /* Tự động phóng to/thu nhỏ và cắt cúp cực đẹp mà không méo */
 }
+/* =========================================
+   HỆ THỐNG SÓNG & THUYỀN CHUYỂN ĐỘNG (ANIMATED OCEAN)
+   ========================================= */
 
-.game-modal.active {
-    display: flex;
-    opacity: 1;
-}
-
-.modal-content {
+/* Đảm bảo khung chứa (section) có position: relative để neo sóng vào đáy */
+.story-slide {
     position: relative;
-    width: 95%;
-    height: 90%;
-    max-width: 1400px;
-    background: #000;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 50px rgba(0,0,0,0.5);
-    transform: scale(0.9);
-    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    overflow: hidden; /* Giấu phần sóng tràn ra ngoài màn hình */
 }
 
-.game-modal.active .modal-content {
-    transform: scale(1);
-}
-
-.modal-content iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.close-modal {
+/* --- Khung đại dương --- */
+.animated-ocean {
     position: absolute;
-    top: 20px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 10001;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.close-modal:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: rotate(90deg);
-}
-
-.game-footer-info {
-    margin-top: 15px;
-    padding: 15px;
-    background: #f8f9fa;
-    border-radius: 12px;
-    text-align: center;
-}
-
-.game-footer-info p {
-    font-size: 0.9rem;
-    color: #000;
-    margin: 0;
-}
-
-.alternative-games {
-    margin-top: 30px;
-}
-
-@media (max-width: 768px) {
-    .game-iframe-container {
-        height: 280px;
-    }
-}
-
-@media (max-width: 480px) {
-    .game-iframe-container {
-        height: 220px;
-    }
-    
-    .alternative-games {
-        margin-top: 20px;
-    }
-}
-
-/* ==========================================
-   FISHING SCENE - COMPACT & MODERN
-   ========================================== */
-.fishing-scene.photo-background {
-    position: relative;
-    height: 500px;
-    border-radius: 24px;
-    overflow: hidden;
-    margin: 40px 0;
-    background: url('https://png.pngtree.com/thumb_back/fh260/background/20241202/pngtree-angler-catching-big-fish-on-open-water-image_16728467.jpg') center/cover no-repeat;
-    display: flex;
-    align-items: flex-end;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
-
-.photo-overlay {
+    bottom: 0;
+    left: 0;
     width: 100%;
-    padding: 40px;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-    color: white;
+    height: 120px; /* Độ cao của cụm sóng */
+    z-index: 10; /* Nằm đè lên nền nhưng dưới các chữ/ảnh nếu cần */
+    pointer-events: none; /* Không cản trở việc click chuột của người dùng */
 }
 
-.photo-caption {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+/* --- Con thuyền --- */
+.boat-on-waves {
+    position: absolute;
+    bottom: 20px; /* Cưỡi trên ngọn sóng */
+    left: 10%; /* Vị trí xuất phát */
+    width: 120px; /* Độ to của thuyền, bạn có thể chỉnh lại cho vừa ảnh thuyen.png */
+    z-index: 13; /* Nằm kẹp giữa các lớp sóng */
+    
+    /* Hiệu ứng trôi tiến về phía trước và tròng trành */
+    animation: 
+        sailForward 25s linear infinite, 
+        boatBobbing 3s ease-in-out infinite alternate;
+}
+
+/* Hiệu ứng lướt ngang màn hình */
+@keyframes sailForward {
+    0% { left: -150px; }
+    100% { left: 110%; }
+}
+
+/* Hiệu ứng tròng trành, nhấp nhô theo sóng */
+@keyframes boatBobbing {
+    0% { transform: translateY(0px) rotate(-3deg); }
+    100% { transform: translateY(12px) rotate(3deg); }
+}
+
+/* --- 3 Lớp Sóng (Vẽ bằng SVG siêu nhẹ) --- */
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%; /* Rộng gấp đôi màn hình để cuộn liên tục */
+    height: 100px;
+    animation: waveFlow linear infinite;
+}
+
+/* Hiệu ứng sóng cuộn ngang */
+@keyframes waveFlow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Cuộn đi nửa chiều dài rồi lặp lại */
+}
+
+/* Sóng lớp trong cùng (Xanh đậm, trôi chậm) */
+.wave-back {
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 Q100,20 200,50 T400,50 T600,50 T800,50 L800,100 L0,100 Z" fill="%2372d2e0" opacity="0.6"/></svg>') repeat-x;
+    background-size: 400px 100px;
+    z-index: 11;
+    bottom: 15px;
+    animation-duration: 12s;
+}
+
+/* Sóng lớp giữa (Xanh nhạt, trôi ngược lại cho tự nhiên) */
+.wave-middle {
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 Q100,10 200,50 T400,50 T600,50 T800,50 L800,100 L0,100 Z" fill="%23bde4f5" opacity="0.8"/></svg>') repeat-x;
+    background-size: 400px 100px;
+    z-index: 12;
+    bottom: 5px;
+    animation-duration: 9s;
+    animation-direction: reverse;
+}
+
+/* Sóng lớp ngoài cùng (Màu trắng, che luôn đáy màn hình) */
+.wave-front {
+    background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 800 100" xmlns="http://www.w3.org/2000/svg"><path d="M0,50 Q100,30 200,50 T400,50 T600,50 T800,50 L800,100 L0,100 Z" fill="%23ffffff" opacity="1"/></svg>') repeat-x;
+    background-size: 400px 100px;
+    z-index: 14; /* Che lên một phần của con thuyền */
+    bottom: -15px;
+    animation-duration: 6s;
+}
+/* =========================================
+   PHÂN CẢNH 3: BẢO QUẢN HẢI SẢN
+   ========================================= */
+
+.light-theme {
+    background-color: #fcf9f2; /* Màu nền kem nhạt dịu mắt */
+    padding: 80px 40px 150px 40px; /* Chừa khoảng trống bên dưới cho sóng biển */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Khung chứa tổng giới hạn kích thước để web không bị dàn trải quá đà */
+.grid-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Khoảng cách 20px giữa hàng trên và hàng dưới */
+    z-index: 2;
+}
+
+/* --- HÀNG TRÊN (Tỷ lệ 3.5 : 6.5) --- */
+.top-row {
+    display: flex;
+    gap: 20px;
+    align-items: stretch; /* Ép 2 cột cao bằng nhau */
+}
+
+/* Cột Chữ */
+.text-column {
+    flex: 0 0 35%; /* Ép cứng cột chữ chiếm 35% chiều rộng */
+    display: flex;
+    position: relative;
+}
+
+.blue-accent-bar {
+    width: 35px;
+    background-color: #2b6cb0; /* Màu xanh dương chuẩn thiết kế */
+    border-radius: 10px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Không cho thanh này bị teo nhỏ lại */
+}
+
+.preservation-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #222;
+    margin: auto 0; /* Tự động đẩy chữ ra chính giữa theo chiều dọc */
+    position: relative;
+    z-index: 2; /* Chữ nổi lên trên mảng màu nước */
+}
+
+.watercolor-splash {
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    width: 110%; /* Cho tràn nhẹ ra ngoài để tự nhiên */
+    z-index: 1;
+    pointer-events: none;
     opacity: 0.9;
 }
 
-@media (max-width: 768px) {
-    .fishing-scene.photo-background {
-        height: 350px;
+/* Cột Ảnh lớn */
+.main-image-column {
+    flex: 1; /* Tự động chiếm phần diện tích còn lại */
+}
+
+/* --- HÀNG DƯỚI (3 ảnh chia đều tăm tắp) --- */
+.bottom-row {
+    display: flex;
+    gap: 20px;
+    height: 260px; /* Chốt cứng chiều cao cho 3 ảnh đều nhau */
+}
+
+.small-image-wrapper {
+    flex: 1; /* Ép 3 ảnh chia không gian bằng nhau 100% */
+}
+
+/* --- CÔNG THỨC BO GÓC VÀ CẮT CÚP ẢNH CHUNG --- */
+.rounded-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 16px; 
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+    
+    /* 1. THÊM DÒNG NÀY: Giúp hiệu ứng chuyển động diễn ra mượt mà trong 0.3 giây */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+/* 2. THÊM NGUYÊN CỤM NÀY: Hiệu ứng khi người dùng di chuột (hover) vào ảnh */
+.rounded-img:hover {
+    /* Nhấc nhẹ bức ảnh lên 5px */
+    transform: translateY(-5px); 
+    
+    /* Tăng độ đậm và tỏa của bóng đổ, tạo cảm giác ảnh đang "nổi lềnh bềnh" trên màn hình */
+    box-shadow: 0 12px 24px rgba(0,0,0,0.25); 
+}
+/* =========================================
+   PHÂN CẢNH 4: ĐỘI XE HẬU CẦN
+   ========================================= */
+
+.dark-theme {
+    background-color: #000; 
+    color: #fff;
+    position: relative;
+    padding: 80px 40px 150px 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+    /* THÊM DÒNG NÀY: Khóa chặt sóng biển bên trong section */
+    overflow: hidden; 
+}
+
+/* Thêm hiệu ứng ánh sáng ở góc trên trái ( flare ) */
+.grid-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Khung chứa lưới */
+.grid-container {
+    width: 100%;
+    max-width: 1200px; /* Tương tự các section khác để nhất quán */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột bằng nhau */
+    grid-template-rows: 1fr 1fr; /* 2 hàng bằng nhau */
+    gap: 40px; /* Khoảng cách giữa các ô lưới */
+    z-index: 2;
+}
+
+.grid-item {
+    display: flex;
+    align-items: flex-start; /* Căn nội dung lên đỉnh */
+}
+
+/* Định dạng ảnh */
+.logistics-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cắt ảnh vừa vặn */
+    border-radius: 12px; /* Bo góc nhẹ */
+    display: block;
+}
+
+/* Định dạng tiêu đề */
+.title-item {
+    justify-content: flex-start; /* Căn tiêu đề sang trái */
+    padding-top: 10px;
+}
+
+.section-title {
+    font-family: 'Montserrat', sans-serif; /* Hoặc tương tự sans-serif khác của bạn */
+    font-weight: 700;
+    font-size: 2.6rem;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 1.3;
+    margin: 15px;
+    text-align: left;
+}
+.cyan-text {
+    color: #8ed6d8; /* Nhấn màu xanh lơ cực đẹp giống Canva */
+}
+/* Định dạng khối văn bản */
+.text-item {
+    justify-content: flex-start;
+}
+
+.text-block-background {
+    background-color: #3f686c; /* Đổi sang nền xanh cổ vịt/teal */
+    padding: 30px 40px;
+    border-radius: 12px;
+    height: 100%; /* Ép hộp màu cao bằng hết không gian của nó */
+    display: flex;
+    align-items: center; /* Tự động đẩy chữ ra giữa hộp theo chiều dọc */
+}
+
+.description-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #ffffff; /* Chữ màu trắng nổi bật trên nền xanh */
+    margin: 0;
+    text-align: left;
+}
+/* =========================================
+   SỬA LỖI TRÙNG LẶP LAYOUT GIỮA SECTION 3 VÀ 4
+   ========================================= */
+
+/* 1. Trả lại hình dáng cho Section 3 (Bảo quản hải sản) */
+#preservation-routine .grid-container {
+    display: flex !important;
+    flex-direction: column !important; /* Xếp hàng trên và hàng dưới theo chiều dọc */
+    width: 100%;
+    max-width: 1200px;
+    gap: 20px;
+    z-index: 2;
+}
+
+/* 2. Giữ nguyên hình dáng lưới cho Section 4 (Đội xe hậu cần) */
+#logistics-fleet .grid-container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Chia 2 cột */
+    grid-template-rows: 1fr 1fr !important; /* Chia 2 hàng */
+    width: 100%;
+    max-width: 1200px;
+    gap: 40px;
+    z-index: 2;
+}
+/* --- SỬA LẠI KHUNG LƯỚI CHO GỌN GÀNG (Đè lên code cũ) --- */
+#logistics-fleet.dark-theme {
+    height: 100vh; /* Khóa cứng đúng 1 màn hình, không cho dài lê thê */
+    padding: 40px 50px 100px 50px; /* Cắt bớt phần đệm bên dưới */
+}
+
+#logistics-fleet .grid-container {
+    /* Chia lại tỷ lệ: Hàng ảnh cao (1.2 phần), hàng chữ thấp (0.8 phần) */
+    grid-template-rows: 1.2fr 0.8fr !important; 
+    gap: 20px 40px !important; /* Thu hẹp khoảng cách giữa ảnh và chữ xuống còn 20px */
+    height: 100%; /* Ép lưới bung đều trong không gian đã khóa */
+}
+/* =========================================
+   PHÂN CẢNH 5: CÔNG NGHỆ VẬN CHUYỂN
+   ========================================= */
+
+/* Khung chứa tổng của phân cảnh này */
+.lifeline-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* Khoảng cách giữa đoạn văn mở đầu và khu vực 2 cột */
+    z-index: 2;
+}
+
+/* Đoạn văn mở đầu */
+.intro-paragraph {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #222;
+    text-align: left;
+    margin: 0;
+}
+
+/* Khu vực chia 2 cột */
+.tech-split-layout {
+    display: flex;
+    gap: 40px; /* Khoảng cách giữa cột Thẻ và cột Ảnh */
+    align-items: stretch; /* Ép 2 cột cao bằng nhau */
+}
+
+/* Định dạng Cột trái & Cột phải */
+.tech-cards-column, 
+.tech-images-column {
+    flex: 1; /* Chia đều 50% - 50% */
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Khoảng cách giữa 2 thẻ / 2 ảnh xếp dọc */
+}
+
+/* --- THIẾT KẾ THẺ THÔNG TIN VIỀN XANH --- */
+.tech-card {
+    border: 3px solid #2b6cb0; /* Viền xanh dương đậm */
+    border-radius: 8px;
+    padding: 25px 30px;
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa cụm Số và cụm Chữ */
+    background-color: #fff; /* Nền trắng cho nổi bật trên nền kem */
+    flex: 1; /* Ép các thẻ giãn đều chiều cao */
+}
+
+/* Cụm Số và Tên bên trái thẻ */
+.tech-card-left {
+    display: flex;
+    flex-direction: column;
+    color: #2b6cb0; /* Đồng bộ màu xanh của viền */
+    min-width: 140px; /* Cố định độ rộng để các đoạn chữ bên phải thẳng hàng nhau */
+}
+
+.tech-num {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.tech-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Đoạn chữ mô tả bên phải thẻ */
+.tech-card-right {
+    flex: 1;
+    display: flex;
+    align-items: center; /* Căn giữa chữ theo chiều dọc */
+}
+
+.tech-card-right p {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+}
+
+/* --- KHUNG ẢNH CỘT PHẢI --- */
+.tech-images-column .img-wrapper {
+    flex: 1; /* Ép 2 ảnh chia đều chiều cao của cột */
+    width: 100%;
+    /* Ngăn ảnh phình to phá vỡ tỷ lệ */
+    min-height: 0; 
+}
+
+/* Vì đã có class .rounded-img tái sử dụng, ảnh sẽ tự động được bo góc 16px, cắt cúp gọn gàng và có bóng đổ nổi lên khi di chuột! */
+/* =========================================
+   PHÂN CẢNH 6: NHỊP ĐẬP ĐẠI DƯƠNG (CAI DAM MARKET)
+   ========================================= */
+
+#ocean-pulse {
+    background-color: #041018; /* Màu nền xanh đen biển sâu */
+    position: relative;
+    padding: 80px 40px 180px 40px; /* Chừa khoảng trống rộng ở đáy cho sóng vỗ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Khóa sóng không bị trào ra ngoài */
+}
+
+/* Khung chứa tổng chia 2 cột */
+.pulse-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    gap: 60px; /* Khoảng cách giữa cột chữ và lưới ảnh */
+    z-index: 2; /* Nổi lên trên lớp sóng biển */
+}
+
+/* --- CỘT TRÁI: TIÊU ĐỀ & VĂN BẢN --- */
+.pulse-text-column {
+    flex: 0 0 42%; /* Chiếm 42% chiều rộng */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    justify-content: center; /* Căn giữa theo chiều dọc */
+}
+
+.pulse-title-box {
+    background-color: #0c3857; /* Nền xanh hải quân đậm */
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Đổ bóng nhẹ cho hộp chữ nổi lên */
+}
+
+.pulse-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.3;
+    color: #ffffff;
+    margin: 0;
+}
+
+.pulse-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #e0e0e0; /* Trắng xám dịu mắt */
+    margin: 0;
+}
+
+/* --- CỘT PHẢI: LƯỚI ẢNH (CSS GRID NÂNG CAO) --- */
+.pulse-gallery-column {
+    flex: 1; /* Chiếm phần không gian còn lại */
+    display: grid;
+    grid-template-columns: 4fr 5.5fr; /* Cột trái nhỏ hơn cột phải một chút */
+    grid-template-rows: repeat(3, 160px); /* Chốt cứng 3 hàng, mỗi hàng cao 160px */
+    gap: 15px; /* Khe hở giữa các bức ảnh */
+}
+
+/* Ảnh lớn: Bắt nó trải dài từ hàng 1 xuống hết hàng 3 */
+.pulse-img-large {
+    grid-row: 1 / span 3; 
+    grid-column: 1;
+}
+
+/* 3 Ảnh nhỏ: Tự động xếp chồng lên nhau ở cột 2 */
+.pulse-img-small {
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
+}
+
+/* Chú ý: Nhờ class .rounded-img cũ, ảnh của bạn đã được tự động bo góc 16px, 
+cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi di chuột rồi nhé! */
+/* =========================================
+   PHÂN CẢNH 7: KỸ THUẬT BẢO QUẢN
+   ========================================= */
+
+#preservation-technique {
+    background-color: #000000; /* Nền đen tuyền */
+    padding: 100px 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.technique-container {
+    width: 100%;
+    max-width: 1200px; /* Nới rộng tổng thể khung lề một chút để web thoáng hơn */
+    display: flex;
+    
+    /* CHÌA KHÓA Ở ĐÂY: Tăng gap lên gấp đôi để tạo ra một khoảng trống cực lớn ở giữa, nhường chỗ cho ảnh tròn */
+    gap: 130px; 
+    
+    align-items: center; 
+}
+
+/* --- CỘT TRÁI: NHÓM VIDEO & ẢNH TRÒN --- */
+.media-column {
+    flex: 1; 
+    position: relative; /* RẤT QUAN TRỌNG: Làm gốc tọa độ để ảnh tròn bám vào */
+    margin-bottom: 40px; /* Chừa khoảng trống bên dưới để ảnh không bị cắt */
+}
+
+/* Khung Video */
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Ép tỷ lệ video chuẩn (như YouTube) */
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #1a1a1a; /* Màu chờ khi video chưa load */
+    box-shadow: 0 10px 30px rgba(255,255,255,0.05);
+}
+
+.rounded-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Chiếc ảnh tròn bay lơ lửng */
+.circle-image-wrapper {
+    position: absolute;
+    bottom: -15%; 
+    right: -25%; /* Giảm nhẹ lại một chút để nó nằm ngay chính giữa khoảng trống 130px vừa tạo */
+    
+    width: 45%; 
+    aspect-ratio: 1 / 1; 
+    border-radius: 50%; 
+    border: 8px solid #0d1e40; 
+    overflow: hidden;
+    box-shadow: -10px 15px 30px rgba(0,0,0,0.8); 
+    z-index: 5; 
+}
+
+.circle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Chống méo ảnh */
+}
+
+/* --- CỘT PHẢI: VĂN BẢN --- */
+.text-column {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.technique-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0;
+}
+
+.technique-list {
+    margin: 0;
+    padding-left: 25px; /* Thụt đầu dòng cho dấu chấm tròn (bullet) */
+}
+
+.technique-list li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #e0e0e0; /* Xám sáng nhẹ */
+    margin-bottom: 15px;
+}
+
+.technique-list li strong {
+    color: #ffffff; /* Từ khóa in đậm trắng sáng */
+    font-weight: 700;
+}
+/* =========================================
+   PHÂN CẢNH 8: CÁC LOÀI SỨC SỐNG CAO
+   ========================================= */
+
+.dark-navy-theme {
+    /* 1. Đặt ảnh nền của bạn vào đây (Nhớ thay đúng tên file ảnh nền) */
+    /* Lệnh linear-gradient giúp phủ một lớp màu xanh đen mờ lên trên ảnh nền, để ảnh không bị chói và làm chìm nội dung */
+    background-image: linear-gradient(rgba(3, 18, 30, 0.7), rgba(3, 18, 30, 0.7)), url('../nen.jpg');
+    
+    background-size: cover; /* Ép ảnh nền phủ kín toàn bộ màn hình */
+    background-position: center; /* Căn ảnh nền vào giữa */
+    
+    /* 2. CHÌA KHÓA VÀNG Ở ĐÂY: Khóa chặt ảnh nền vào màn hình, tạo hiệu ứng lướt */
+    background-attachment: fixed;
+    
+    /* Các thông số cũ giữ nguyên */
+    padding: 100px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Khung lưới chia 3 cột bằng nhau */
+.vitality-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Ép chia đúng 3 cột */
+    gap: 25px; /* Khe hở giữa các ảnh và hộp chữ */
+}
+
+/* Đảm bảo ô lưới chứa ảnh lấp đầy không gian */
+.grid-cell {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- KHUNG ẢNH (Bao gồm viền trắng và bóng đổ) --- */
+.hover-figure {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    border: 3px solid #ffffff; /* Viền trắng */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    overflow: hidden; /* CỰC QUAN TRỌNG: Cắt đi phần ảnh phình ra và giấu chú thích ở dưới đáy */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Khi di chuột vào toàn bộ khung: Khung nảy nhẹ lên */
+.hover-figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.6);
+}
+
+/* --- BỨC ẢNH BÊN TRONG --- */
+.hover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Chuyển động zoom mất 0.5s cho mượt */
+}
+
+/* Khi di chuột vào khung: Ảnh bên trong sẽ từ từ bự lên 10% */
+.hover-figure:hover .hover-img {
+    transform: scale(1.1); 
+}
+
+/* --- DÒNG CHÚ THÍCH BỊ GIẤU --- */
+.hover-caption {
+    position: absolute;
+    /* Ban đầu kéo tụt nó xuống dưới âm 100% để giấu đi */
+    bottom: -100%; 
+    left: 0;
+    width: 100%;
+    background: rgba(3, 18, 30, 0.85); /* Nền xanh biển trong suốt để dễ đọc chữ */
+    color: #ffffff;
+    padding: 12px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+    text-align: center;
+    margin: 0;
+    box-sizing: border-box;
+    transition: bottom 0.4s ease; /* Hiệu ứng trượt mất 0.4s */
+}
+
+/* Khi di chuột vào khung: Dòng chú thích trượt lên bằng đúng mép dưới (0) */
+.hover-figure:hover .hover-caption {
+    bottom: 0; 
+}
+
+/* Giữ nguyên định dạng chiều cao cũ để lưới ảnh không bị xô lệch */
+.tall-img { height: 320px; }
+.wide-img { height: 240px; }
+
+/* --- HỘP VĂN BẢN XANH CỔ VỊT --- */
+.vitality-text-box {
+    background-color: #1a5158; /* Màu xanh teal y hệt thiết kế */
+    padding: 30px 40px;
+    display: flex;
+    align-items: center; /* Căn chữ ra chính giữa hộp */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+
+.vitality-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.35rem; /* Cỡ chữ vừa vặn dễ đọc */
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* Xử lý cho màn hình máy tính bảng/điện thoại (Tùy chọn thêm để web không bị vỡ trên điện thoại) */
+@media (max-width: 900px) {
+    .vitality-grid {
+        grid-template-columns: 1fr 1fr; /* Màn hình nhỏ hơn thì chia 2 cột */
+    }
+    .grid-cell.vitality-text-box {
+        grid-column: 1 / -1; /* Ép hộp chữ trải dài hết hàng */
     }
 }
+@media (max-width: 600px) {
+    .vitality-grid {
+        grid-template-columns: 1fr; /* Điện thoại thì xếp dọc hết 1 cột */
+    }
 }
+/* =========================================
+   PHÂN CẢNH 9: TRÍCH DẪN KHÁCH DU LỊCH
+   ========================================= */
+
+.dark-blue-quote-theme {
+    background-color: #17203b; /* Nền xanh navy đậm */
+    position: relative;
+    padding: 80px 40px 180px 40px; /* Chừa khoảng trống bên dưới cho sóng biển vỗ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Khung chứa tổng chia 2 cột */
+.quote-container {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    align-items: center; /* Căn giữa 2 cột theo chiều dọc */
+    gap: 60px; /* Khoảng trống giữa ảnh và chữ */
+    z-index: 2; /* Nổi lên trên lớp sóng */
+}
+
+/* --- CỘT TRÁI: ẢNH NHÂN VẬT --- */
+.quote-image-col {
+    flex: 1; /* Chiếm 50% */
+}
+
+.character-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px; /* Bo góc ảnh nhẹ nhàng */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* =========================================
+   KHÓA CHẶT BỐ CỤC MR. QI (CHỐNG LỆCH TRÁI)
+   ========================================= */
+
+/* 1. Ép khung tổng phải bung rộng 1100px và đứng chính giữa */
+#tourist-quote .quote-container {
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 50px !important;
+}
+
+/* 2. Khóa cứng cột ảnh ở mức 42% */
+#tourist-quote .quote-image-col {
+    flex: 0 0 42% !important;
+    max-width: 42% !important;
+    width: 42% !important;
+}
+/* --- NÂNG CẤP HIỆU ỨNG CHO ẢNH MR. QI (ĐỒNG BỘ VỚI MR. HUNG) --- */
+#tourist-quote .character-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: block;
+}
+
+#tourist-quote .character-img:hover {
+    transform: translateY(-8px) scale(1.02); 
+    box-shadow: 0 20px 45px rgba(0,0,0,0.7); 
+}
+/* 3. Khóa cứng cột chữ ở mức 58% */
+#tourist-quote .quote-text-col {
+    flex: 0 0 58% !important;
+    max-width: 58% !important;
+    width: 58% !important;
+    padding: 0 !important;
+}
+
+/* 4. Ép hộp kính mờ phình to hết cỡ trong cột chữ */
+#tourist-quote .quote-box {
+    width: 100% !important;
+    box-sizing: border-box !important; /* Rất quan trọng: Ngăn padding phá vỡ khung */
+    position: relative;
+    background: rgba(15, 36, 60, 0.6) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 24px !important;
+    padding: 45px 50px !important;
+    text-align: center !important; /* Ép chữ căn giữa */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3) !important;
+    margin: 0 !important;
+    transition: all 0.4s ease;
+}
+
+#tourist-quote .quote-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.5) !important;
+    background: rgba(15, 36, 60, 0.8) !important; 
+    border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* 5. Tút tát lại chữ cho đẹp */
+#tourist-quote .quote-content {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.35rem !important;
+    line-height: 1.7 !important;
+    font-style: italic !important;
+    color: #ffffff !important;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+#tourist-quote .quote-content strong {
+    font-weight: 800 !important;
+    font-style: normal !important;
+    color: #8ed6d8 !important;
+}
+
+/* 6. Dấu ngoặc kép chìm phía sau */
+#tourist-quote .quote-icon {
+    position: absolute;
+    font-family: 'Georgia', serif !important;
+    font-size: 10rem !important;
+    line-height: 1 !important;
+    color: rgba(142, 214, 216, 0.1) !important;
+    background: transparent !important;
+    z-index: 1; 
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+#tourist-quote .quote-open { top: -20px; left: 10px; }
+#tourist-quote .quote-close { bottom: -80px; right: 10px; }
+
+#tourist-quote .quote-box:hover .quote-icon {
+    transform: scale(1.1) rotate(5deg); 
+    color: rgba(142, 214, 216, 0.18) !important;
+}
+/* =========================================
+   PHÂN CẢNH 10: TÁI TẠO ĐỘ SÂU
+   ========================================= */
+
+.light-parallax-theme {
+    /* Nền mờ ảo, bạn hãy thay bằng ảnh nền sáng màu nước của bạn */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('anh_nen_nuoc_sang.jpg');
+    background-attachment: fixed; /* Hiệu ứng cuộn lướt */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 100px 40px 180px 40px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.depth-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    gap: 80px; /* Khoảng cách rộng rãi giữa chữ và ảnh */
+    align-items: center;
+    z-index: 2;
+}
+
+/* --- CỘT TRÁI: TIÊU ĐỀ & CHỮ --- */
+.depth-text-col {
+    flex: 0 0 45%;
+}
+
+.depth-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.2;
+    color: #0f364a;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.highlight-blue {
+    color: #3182ce; /* Màu xanh nhấn mạnh giống Canva */
+}
+
+.depth-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #2d3748;
+    max-width: 90%;
+}
+
+/* --- CỘT PHẢI: LƯỚI ẢNH 2X2 --- */
+.depth-gallery-col {
+    flex: 1;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột */
+    grid-template-rows: 1fr 1fr;    /* 2 hàng */
+    gap: 20px;
+}
+
+.grid-photo {
+    aspect-ratio: 4 / 3; /* Giữ tỷ lệ ảnh chuẩn, không bị méo */
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+/* Tái sử dụng class .rounded-img bạn đã có hiệu ứng hover từ trước */
+.grid-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* =========================================
+   PHÂN CẢNH 11: TRÍCH DẪN MR. HUNG
+   ========================================= */
+
+/* Nền đại dương cuộn Parallax */
+.dark-ocean-parallax-theme {
+    /* Lớp màng xanh navy tối phủ lên ảnh nền đại dương */
+    background-image: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('../nen.jpg');
+    background-attachment: fixed; /* Khóa ảnh nền để tạo hiệu ứng lướt */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    padding: 100px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* KHÓA CHẶT BỐ CỤC CHỐNG LỆCH TRÁI (Tương tự Mr. Qi) */
+#owner-quote .quote-container {
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important; 
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 50px !important;
+}
+
+/* Cột Ảnh */
+#owner-quote .quote-image-col {
+    flex: 0 0 42% !important;
+    max-width: 42% !important;
+    width: 42% !important;
+}
+
+#owner-quote .character-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+    
+    /* 1. THÊM DÒNG NÀY: Khởi động bộ máy chuyển động mượt mà trong 0.4s */
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+}
+
+/* Cột Chữ (Kết hợp hộp Quote và Caption) */
+#owner-quote .quote-text-col {
+    flex: 0 0 58% !important;
+    max-width: 58% !important;
+    width: 58% !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Tạo khoảng trống giữa hộp kính và dòng chú thích */
+}
+
+/* --- KẾ THỪA HIỆU ỨNG KÍNH MỜ SIÊU SANG TỪ MR. QI --- */
+#owner-quote .quote-box {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    position: relative;
+    background: rgba(15, 36, 60, 0.6) !important; /* Xanh navy trong suốt */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 24px !important;
+    padding: 40px 45px !important;
+    text-align: center !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3) !important;
+    margin: 0 !important;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+#owner-quote .quote-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.5) !important;
+    background: rgba(15, 36, 60, 0.8) !important; 
+    border-color: rgba(255, 255, 255, 0.6) !important;
+}
+
+#owner-quote .quote-content {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 1.45rem !important; 
+    line-height: 1.6 !important;
+    font-style: italic !important;
+    color: #ffffff !important;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* Dấu ngoặc kép chìm watermark */
+#owner-quote .quote-icon {
+    position: absolute;
+    font-family: 'Georgia', serif !important;
+    font-size: 10rem !important;
+    line-height: 1 !important;
+    color: rgba(255, 255, 255, 0.08) !important; /* Trắng cực kỳ mờ */
+    background: transparent !important;
+    z-index: 1; 
+    pointer-events: none;
+    transition: all 0.5s ease;
+}
+
+#owner-quote .quote-open { top: -20px; left: 10px; }
+#owner-quote .quote-close { bottom: -80px; right: 10px; }
+
+#owner-quote .quote-box:hover .quote-icon {
+    transform: scale(1.1) rotate(5deg); 
+    color: rgba(255, 255, 255, 0.15) !important; /* Đậm lên chút khi hover */
+}
+
+/* --- DÒNG CHÚ THÍCH (CAPTION) --- */
+#owner-quote .quote-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #cbd5e1; /* Trắng xám nhạt */
+    text-align: center;
+    margin: 0;
+    padding: 0 15px; /* Giúp chữ gọn gàng hơn */
+}
+/* 2. THÊM NGUYÊN CỤM NÀY: Hành động khi lướt chuột (Hover) */
+#owner-quote .character-img:hover {
+    /* Nhấc ảnh nảy lên 8px và phóng to nhẹ 2% tạo cảm giác 3D rất cuốn */
+    transform: translateY(-8px) scale(1.02); 
+    /* Bóng đổ đậm và tỏa rộng ra xung quanh */
+    box-shadow: 0 20px 45px rgba(0,0,0,0.7); 
+}
+/* =========================================
+   PHÂN CẢNH 12: ĐỘ CHÍNH XÁC TỪ DỮ LIỆU
+   ========================================= */
+
+/* =========================================
+   PHÂN CẢNH 12: ĐỘ CHÍNH XÁC TỪ DỮ LIỆU
+   ========================================= */
+
+.light-cream-theme {
+    background-color: #fcfaf5; 
+    padding: 100px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.precision-container {
+    width: 100%;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    gap: 60px; 
+    /* SỬA LỖI Ở ĐÂY: Dùng center thay vì stretch để không ép ảnh bị kéo giãn phình to */
+    align-items: center; 
+}
+
+/* --- CỘT TRÁI (Khoảng 42%) --- */
+.precision-left-col {
+    flex: 0 0 42%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+}
+
+/* TẠO KHUNG CỐ ĐỊNH CHO ẢNH TRÁI */
+.precision-left-col .img-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Ép tỷ lệ khung là 4:3 (Hình chữ nhật vừa phải) */
+    border-radius: 16px;
+    overflow: hidden; /* Cắt gọt phần ảnh tràn ra ngoài */
+    border: 5px solid #ffffff; /* Viền trắng khung tranh */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.precision-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.precision-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.45rem;
+    line-height: 1.6;
+    color: #16365b; 
+    margin: 0;
+    font-weight: 500;
+}
+
+.blue-underline {
+    width: 85%; 
+    height: 3px; 
+    background-color: #1d5b96; 
+    margin-top: 30px;
+    border-radius: 2px;
+}
+
+/* --- CỘT PHẢI (Khoảng 58%) --- */
+.precision-right-col {
+    flex: 0 0 58%; 
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+/* TẠO KHUNG CỐ ĐỊNH CHO 2 ẢNH PHẢI */
+.precision-right-col .img-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Ép tỷ lệ khung là 16:9 (Hình chữ nhật ngang) */
+    border-radius: 16px;
+    overflow: hidden;
+    border: 5px solid #ffffff; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* --- BỨC ẢNH NẰM BÊN TRONG KHUNG --- */
+.precision-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Đảm bảo lấp đầy khung mà không méo */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* HIỆU ỨNG KHI DI CHUỘT (Cực xịn) */
+/* Cả khung nảy lên */
+#data-driven-precision .img-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(0,0,0,0.15);
+}
+
+/* Ảnh bên trong khung hơi zoom nhẹ lên */
+#data-driven-precision .img-wrapper:hover .precision-img {
+    transform: scale(1.05);
+}
+/* =========================================
+   PHÂN CẢNH 13: HÀNH TRÌNH ĐẾN BÀN ĂN (TỔNG KẾT)
+   ========================================= */
+
+.light-cloud-theme {
+    /* Phủ một lớp sương trắng mờ 60% lên trên ảnh mây để chữ không bị chìm */
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), url('../nen.jpg'); 
+    background-color: #e3f2fd; 
+    background-size: cover;
+    background-position: center;
+    
+    /* CHÌA KHÓA VÀNG TẠO HIỆU ỨNG THỊ SAI NẰM Ở ĐÂY */
+    background-attachment: fixed; 
+    
+    position: relative;
+    padding: 0 0 180px 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* --- TẦNG TRÊN: DẢI 3 ẢNH BANNER --- */
+.journey-top-banner {
+    width: 100%;
+    display: flex;
+    height: 35vh; /* Chiếm khoảng 35% chiều cao màn hình */
+    min-height: 250px;
+}
+
+.journey-top-banner img {
+    flex: 1; /* Chia đều không gian cho 3 ảnh */
+    width: 33.333%;
+    height: 100%;
+    object-fit: cover; /* Chống méo ảnh */
+}
+
+/* --- TẦNG DƯỚI: NỘI DUNG --- */
+.journey-bottom-content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 60px 40px;
+    z-index: 2; /* Nổi lên trên nền sóng biển */
+}
+
+/* CỘT TRÁI: CHỮ */
+.journey-text-col {
+    flex: 0 0 45%;
+}
+
+.journey-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: #07294d; /* Màu chữ xanh navy đậm, chìm vào nền mây */
+    margin: 0;
+    font-weight: 500;
+}
+
+/* CỘT PHẢI: BÀN TIỆC OVAL */
+.journey-image-col {
+    flex: 0 0 55%;
+    display: flex;
+    justify-content: center;
+}
+
+.oval-feast-img {
+    width: 100%;
+    /* Ép tỷ lệ bề ngang rộng hơn bề dọc (1.8 : 1) */
+    aspect-ratio: 1.8 / 1; 
+    
+    /* CHÌA KHÓA TẠO HÌNH BẦU DỤC OVAL NẰM Ở ĐÂY */
+    border-radius: 50%; 
+    
+    object-fit: cover;
+    border: 8px solid #00183b; /* Viền xanh navy khổng lồ giống Canva */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    
+    /* Thêm hiệu ứng bay lơ lửng khi hover cho đồng bộ toàn trang */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.oval-feast-img:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.4);
+}
+/* =========================================
+   HIỆU ỨNG HIỂN THỊ KHI CUỘN (SCROLL REVEAL)
+   ========================================= */
+
+/* Trạng thái 1: Bị giấu đi (Mờ và nằm thấp xuống dưới 50px) */
+.scroll-hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); /* Chuyển động lướt lên cực kỳ mượt */
+}
+
+/* Trạng thái 2: Hiện ra (Rõ 100% và trở về vị trí gốc) */
+.scroll-show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mẹo: Delay nhẹ cho các phần tử đứng cạnh nhau để tạo hiệu ứng gợn sóng */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.5s; }

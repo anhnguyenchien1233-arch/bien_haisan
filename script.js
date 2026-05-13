@@ -380,3 +380,35 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup back button when article view exists
     setupBackButton();
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const exploreBtn = document.getElementById('explore-btn');
+    const vinylDisc = document.getElementById('vinylDisc'); 
+    const bgAudio = document.getElementById('bgAudio');
+
+    if (exploreBtn && vinylDisc && bgAudio) {
+        exploreBtn.addEventListener('click', (e) => {
+            // Ngăn chặn trình duyệt nhảy giật cục (nhảy ngay lập tức)
+            e.preventDefault(); 
+
+            // 1. Xử lý âm thanh và đĩa nhạc
+            if (bgAudio.paused) {
+                bgAudio.play();
+                vinylDisc.classList.add('spinning-active');
+            } else {
+                bgAudio.pause();
+                vinylDisc.classList.remove('spinning-active');
+            }
+
+            // 2. Cuộn mượt mà xuống phân cảnh 1
+            const nextSection = document.getElementById('journey-part-1');
+            if (nextSection) {
+                nextSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        });
+    } else {
+        console.log("Không tìm thấy nút Explore, đĩa nhạc hoặc file Audio.");
+    }
+});
