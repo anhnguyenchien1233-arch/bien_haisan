@@ -610,7 +610,7 @@
 .parallax-divider {
     position: relative;
     min-height: 20vh;
-    background: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=2560&q=90') center/cover no-repeat fixed;
+    background: url('../nen.jpg') center/cover no-repeat fixed;
     display: flex;
     align-items: center;
     justify-content: center;
