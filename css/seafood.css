@@ -1,5 +1,20 @@
-html {
-    scroll-behavior: smooth;
+/* =========================================
+   NỀN THỊ SAI (PARALLAX) XUYÊN SUỐT TOÀN TRANG
+   ========================================= */
+body, html {
+    margin: 0;
+    padding: 0;
+    /* Ảnh đại dương cực đẹp + Lớp phủ gradient từ sáng mặt nước xuống đáy biển tối */
+    background-image: linear-gradient(rgba(0, 34, 68, 0.4), rgba(2, 10, 20, 0.95)), 
+                      url('../whale.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+    
+    /* CHÌA KHÓA: Giữ bức ảnh đứng im khi người dùng cuộn trang */
+    background-attachment: fixed; 
+    
+    color: #fff; /* Đảm bảo chữ mặc định là màu trắng */
 }
 /* ==========================================
    SEAFOOD LANDING PAGE STYLES
@@ -1659,7 +1674,7 @@ html {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background-color: #d6f0fa; /* Xanh biển nhạt mát rượi, dịu mắt */
+    background-color: #0a192f; /* Đại dương sâu thẳm */
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1744,24 +1759,26 @@ html {
     bottom: 8%;
     right: 5%;
     width: 55%;
-    background-color: #bde4f5; /* Xanh lơ nhạt */
+    background-color: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
     padding: 35px 45px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     z-index: 5;
+    border: 1px solid rgba(0, 210, 255, 0.15);
     
     /* Tạo hiệu ứng bong bóng nước mờ mờ chìm dưới chữ */
     background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,0.6) 15px, transparent 16px),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.5) 25px, transparent 26px),
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 35px, transparent 36px);
+        radial-gradient(circle at 10% 20%, rgba(0, 210, 255, 0.15) 15px, transparent 16px),
+        radial-gradient(circle at 80% 80%, rgba(100, 255, 218, 0.1) 25px, transparent 26px),
+        radial-gradient(circle at 50% 50%, rgba(0, 119, 182, 0.2) 35px, transparent 36px);
 }
 
 .quote-box p {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     font-weight: 700;
     font-size: 1.4rem;
-    color: #000000;
+    color: #e6f1ff;
     line-height: 1.6;
     margin: 0;
     text-align: justify;
@@ -1821,35 +1838,37 @@ html {
     bottom: 8%;
     right: 5%;
     width: 55%;
-    background-color: #bde4f5; /* Xanh lơ nhạt */
+    background-color: rgba(10, 25, 47, 0.85);
+    backdrop-filter: blur(10px);
     padding: 40px 50px;
     z-index: 5;
+    border: 1px solid rgba(0, 210, 255, 0.15);
     
     /* Tạo hoạ tiết bong bóng chìm BÊN TRONG hộp chữ giống Canva */
     background-image: 
-        radial-gradient(circle at 15% 30%, rgba(255,255,255,0.7) 20px, transparent 21px),
-        radial-gradient(circle at 85% 70%, rgba(255,255,255,0.5) 35px, transparent 36px),
-        radial-gradient(circle at 50% 85%, rgba(255,255,255,0.6) 25px, transparent 26px),
-        radial-gradient(circle at 75% 20%, rgba(255,255,255,0.4) 15px, transparent 16px);
+        radial-gradient(circle at 15% 30%, rgba(0, 210, 255, 0.15) 20px, transparent 21px),
+        radial-gradient(circle at 85% 70%, rgba(100, 255, 218, 0.1) 35px, transparent 36px),
+        radial-gradient(circle at 50% 85%, rgba(0, 119, 182, 0.15) 25px, transparent 26px),
+        radial-gradient(circle at 75% 20%, rgba(0, 210, 255, 0.1) 15px, transparent 16px);
 }
 
 .quote-box p {
-    font-family: 'Playfair Display', serif; /* Dùng font chữ có chân sẽ nghệ thuật hơn Segoe UI */
+    font-family: 'Playfair Display', serif;
     font-style: italic;
     font-weight: 700;
     font-size: 1.5rem;
-    color: #000000;
+    color: #e6f1ff;
     line-height: 1.7;
     margin: 0;
     text-align: justify;
     position: relative;
-    z-index: 2; /* Nổi chữ lên trên họa tiết bong bóng */
+    z-index: 2;
 }
 /* =========================================
    CÁC MẢNG MÀU NỀN CẮT GHÉP (CANVA STYLE)
    ========================================= */
 #scrapbook-section {
-    background-color: #f4fcff; /* Đổi màu nền cả trang thành trắng xanh siêu nhạt cho nổi các mảng màu */
+    background-color: #0d1b2a; /* Đại dương sâu thẳm */
 }
 
 .canva-block {
@@ -1863,7 +1882,7 @@ html {
     right: 0;
     width: 65%; /* Đủ dài để vươn sang trái */
     height: 38%;
-    background-color: #1a368c; 
+    background-color: #0a1628; 
     z-index: 0; /* Nằm dưới cùng */
 }
 
@@ -1873,7 +1892,7 @@ html {
     left: 10%;
     width: 60px; 
     height: 35%;
-    background: linear-gradient(to bottom, #1023a1, #00e5ff);
+    background: linear-gradient(to bottom, #0a1628, #003366);
     z-index: 0;
 }
 /* =========================================
@@ -2165,25 +2184,26 @@ html {
 
 .preservation-text {
     font-family: 'Lora', serif;
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     line-height: 1.6;
-    color: #1a2a3a; /* Đổi sang xanh đen sẫm cho nét */
+    color: #ffffff !important; 
+    text-shadow: 
+        0 2px 5px rgba(0, 0, 0, 0.9), 
+        0 5px 15px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 500;
     margin: auto 0;
     position: relative;
-    z-index: 2;
-    text-shadow: 
-        0 0 15px rgba(255, 255, 255, 1),
-        0 0 25px rgba(255, 255, 255, 0.9),
-        1px 1px 2px rgba(255, 255, 255, 0.8);
+    z-index: 10;
 }
+
 .watercolor-splash {
     position: absolute;
     bottom: -20px;
     left: 20px;
-    width: 110%;
-    z-index: 0;
+    width: 110%; /* Cho tràn nhẹ ra ngoài để tự nhiên */
+    z-index: 1;
     pointer-events: none;
-    opacity: 0.45; 
+    opacity: 0.9;
 }
 
 /* Cột Ảnh lớn */
@@ -2376,7 +2396,7 @@ html {
     font-family: 'Lora', serif;
     font-size: 1.5rem;
     line-height: 1.6;
-    color: #222;
+    color: #ffffff;
     text-align: left;
     margin: 0;
 }
@@ -2916,7 +2936,6 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
    ========================================= */
 
 .light-parallax-theme {
-    /* Nền mờ ảo, bạn hãy thay bằng ảnh nền sáng màu nước của bạn */
     background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('../nen.jpg');
     background: linear-gradient(to bottom, #0a192f 0%, #fcfaf5 150px, #fcfaf5 100%);
     background-attachment: fixed; /* Hiệu ứng cuộn lướt */
@@ -2950,9 +2969,10 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
     font-size: 3rem;
     font-weight: 900;
     line-height: 1.2;
-    color: #0f364a;
-    margin-bottom: 40px;
-    text-transform: uppercase;
+    color: #ffffff !important; 
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.8); 
+    position: relative;
+    z-index: 10;
 }
 
 .highlight-blue {
@@ -2960,11 +2980,17 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
 }
 
 .depth-description {
-    font-family: 'Lora', serif;
-    font-size: 1.6rem;
+    font-family: 'Lora', serif; 
+    font-size: 1.2rem;
     line-height: 1.6;
-    color: #2d3748;
-    max-width: 90%;
+    color: #f8f9fa !important; 
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.9), 
+        0 5px 15px rgba(0, 0, 0, 0.8) !important;
+    font-weight: 500;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
 }
 
 /* --- CỘT PHẢI: LƯỚI ẢNH 2X2 --- */
@@ -3180,15 +3206,23 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
     font-family: 'Lora', serif;
     font-size: 1.45rem;
     line-height: 1.6;
-    color: #16365b; 
     margin: 0;
+    
+    /* CHÌA KHÓA: Đổi sang màu trắng ngà và đổ bóng cực đậm */
+    color: #f8f9fa !important; 
+    text-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.9), 
+        0 5px 15px rgba(0, 0, 0, 0.9) !important;
+        
     font-weight: 500;
+    position: relative;
+    z-index: 10;
 }
 
 .blue-underline {
     width: 85%; 
     height: 3px; 
-    background-color: #1d5b96; 
+    background-color: #64ffda;
     margin-top: 30px;
     border-radius: 2px;
 }
@@ -3291,7 +3325,7 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
     font-family: 'Lora', serif;
     font-size: 1.5rem;
     line-height: 1.6;
-    color: #07294d; /* Màu chữ xanh navy đậm, chìm vào nền mây */
+    color: #ffffff; 
     margin: 0;
     font-weight: 500;
 }
@@ -3643,38 +3677,52 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0);
 }
 /* =========================================
-   CHUYỂN CẢNH TINH TẾ: DEEP DIVE TRANSITION
+   LÀM TRONG SUỐT CÁC KHỐI ĐỂ LỘ NỀN PARALLAX
    ========================================= */
 
-/* 1. Ép màu khối vuông bên dưới khớp 100% với màu sóng đáy */
-.canva-block.block-top-dark {
-    background-color: #0a254e !important; 
-    border-top: none; /* Xóa mọi đường viền nếu có */
+/* 1. Xóa sạch nền cũ của các section chính */
+.seafood-hero,
+.parallax-divider,
+#the-journey,
+.story-slide {
+    background-color: transparent !important;
+    background-image: none !important; /* Xóa các ảnh nền lẻ tẻ cũ nếu có */
+    background: transparent !important;
 }
 
-/* 2. Kéo dải sóng xích xuống 2px để triệt tiêu hoàn toàn khe hở nứt gãy màu trắng */
-.parallax-divider .waves-svg {
-    display: block;
-    margin-bottom: -2px; 
+/* 2. Biến phần Scrapbook (màu xanh navy cũ) thành khối kính mờ nghệ thuật */
+.canva-block.block-top-dark {
+    background-color: rgba(10, 37, 78, 0.2) !important; /* Chỉ giữ lại 20% màu nền */
+    backdrop-filter: blur(10px); /* Làm nhòe cảnh nền phía sau để dễ đọc chữ */
+    -webkit-backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Thêm viền kính mỏng */
+}
+
+/* 3. Xử lý lớp sóng lượn (Nếu bạn vẫn muốn giữ lớp sóng) */
+/* Đổi màu sóng đáy thành bán trong suốt thay vì màu đặc */
+.wave-parallax use:nth-child(4) {
+    fill: rgba(10, 37, 78, 0.2) !important; 
 }
 /* =========================================
-   SEA SECRETS BUBBLES (DID YOU KNOW)
+   SEA SECRETS BUBBLES (BẢN KHÔI PHỤC HOÀN CHỈNH)
    ========================================= */
 .did-you-know-container {
     margin-top: 60px;
     width: 100%;
     max-width: 1100px;
     text-align: center; /* Căn giữa toàn bộ */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* --- HIỆU ỨNG NƯỚC CHẢY TRONG CHỮ (TƯƠNG PHẢN CAO) --- */
 .liquid-text {
     font-family: 'Playfair Display', serif;
-    font-size: 3.8rem; /* Cho to thêm một chút xíu nữa */
+    font-size: 3.8rem; 
     font-weight: 900;
     margin-bottom: 10px;
     
-    /* 1. Đổi gradient: Sáng hơn, dải màu gắt hơn (Thêm trắng băng và cyan) */
+    /* Dải màu sáng chói */
     background: linear-gradient(
         90deg, 
         #ffffff 0%, 
@@ -3688,19 +3736,17 @@ h1, h2, h3, h4, h5, h6 {
     -webkit-background-clip: text;
     background-clip: text;
     
-    /* 2. CHÌA KHÓA: Tạo một viền trắng mờ bọc quanh chữ để tách biệt khỏi nền */
+    /* Viền trắng mờ và Bóng đen đậm để chống chìm */
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
-    
-    /* 3. CHÌA KHÓA: Dùng drop-shadow thay vì text-shadow để đổ một lớp bóng đen thật đậm phía dưới dải màu */
     filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.9));
     
-    /* Chuyển động liên tục */
     animation: liquidFlow 4s linear infinite;
 }
 
 @keyframes liquidFlow {
     to { background-position: 200% center; }
 }
+
 /* --- DÒNG CHỈ DẪN HOVER NHẤP NHÁY --- */
 .dyk-instruction {
     color: #64ffda;
@@ -3709,7 +3755,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 2px;
     margin-bottom: 40px;
     text-transform: uppercase;
-    animation: pulseText 2s infinite; /* Hiệu ứng nhịp thở */
+    animation: pulseText 2s infinite; 
 }
 
 @keyframes pulseText {
@@ -3727,10 +3773,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .bubble-item {
     position: relative;
-    width: 300px; /* Tăng size bong bóng lên một chút */
+    width: 300px; 
     height: 300px;
     
-    /* Làm nền đục hơn, viền sáng hơn để không bị chìm */
+    /* Nền đục, viền sáng */
     background: rgba(255, 255, 255, 0.08); 
     border: 1px solid rgba(100, 255, 218, 0.4); 
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
@@ -3743,31 +3789,32 @@ h1, h2, h3, h4, h5, h6 {
     padding: 30px;
     backdrop-filter: blur(8px);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer; /* Đổi thành hình bàn tay cho giống nút bấm */
+    cursor: pointer; 
     animation: floating 6s ease-in-out infinite;
 }
 
+/* Lệch nhịp bay cho tự nhiên */
 .bubble-item:nth-child(2) { animation-delay: -2s; }
 .bubble-item:nth-child(3) { animation-delay: -4s; }
 
 .bubble-icon {
-    font-size: 3rem; /* Tăng size icon */
+    font-size: 3rem; 
     margin-bottom: 15px;
     transition: transform 0.5s ease;
 }
 
-/* --- CHỮ BÊN TRONG (TO VÀ DỄ ĐỌC) --- */
+/* --- CHỮ BÊN TRONG BONG BÓNG --- */
 .bubble-content h4 {
-    color: #ffffff; /* Trắng tinh */
+    color: #ffffff; 
     font-family: 'Playfair Display', serif;
-    font-size: 1.4rem; /* Tăng cỡ chữ */
+    font-size: 1.4rem; 
     margin-bottom: 15px;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* Đổ bóng đen mờ để bật khỏi nền */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8); 
 }
 
 .bubble-content p {
-    color: #e6f1ff; /* Trắng xanh sáng */
-    font-size: 1rem; /* Tăng cỡ chữ */
+    color: #e6f1ff; 
+    font-size: 1rem; 
     line-height: 1.6;
     text-shadow: 0 1px 3px rgba(0,0,0,0.8);
     opacity: 0;
@@ -3775,13 +3822,13 @@ h1, h2, h3, h4, h5, h6 {
     transition: all 0.5s ease;
 }
 
-/* --- KHI HOVER --- */
+/* --- HIỆU ỨNG KHI LƯỚT CHUỘT VÀO --- */
 .bubble-item:hover {
-    background: rgba(10, 37, 78, 0.9); /* Khi hover, nền tối hẳn lại để chữ nổi lên 100% */
+    background: rgba(10, 37, 78, 0.9); /* Nền tối hẳn lại để chữ nổi lên */
     border-color: #64ffda;
     transform: scale(1.05) translateY(-10px) !important;
     box-shadow: 0 0 40px rgba(100, 255, 218, 0.3);
-    border-radius: 20px;
+    border-radius: 20px; /* Biến thành hình vuông bo góc */
 }
 
 .bubble-item:hover .bubble-icon {
@@ -3796,29 +3843,4 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes floating {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
-}
-/* =========================================
-   SỬA BỐ CỤC TIÊU ĐỀ HERO SECTION (BẢN CHỮ TO HOÀNH TRÁNG)
-   ========================================= */
-.hero-main-title {
-    max-width: 100% !important; 
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.2; 
-    
-    /* CHÌA KHÓA LÀ ĐÂY: Phóng to size chữ hết cỡ */
-    font-size: 4.8rem !important; /* Bạn có thể tăng lên 5rem hoặc 5.5rem nếu muốn to nữa */
-    
-    /* Trang trí thêm cho chuẩn Cinematic */
-    letter-spacing: 3px; /* Giãn cách các chữ cái ra một chút cho sang trọng */
-    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6); /* Đổ bóng đen đậm để chữ nảy bật lên khỏi nền biển */
-}
-
-/* KHI XEM TRÊN ĐIỆN THOẠI (Màn hình nhỏ) */
-@media (max-width: 768px) {
-    .hero-main-title {
-        font-size: 2.2rem !important; /* Ép nhỏ lại trên mobile để không bị tràn màn hình */
-        letter-spacing: 1px;
-    }
 }
