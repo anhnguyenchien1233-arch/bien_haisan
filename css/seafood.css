@@ -3844,3 +3844,61 @@ h1, h2, h3, h4, h5, h6 {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-20px); }
 }
+/* =========================================
+   HIỆU ỨNG BONG BÓNG ĐẠI DƯƠNG TOÀN TRANG
+   ========================================= */
+.ambient-bubbles-container {
+    position: fixed; /* Ghim chặt vào màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Cho nổi lên trên cùng để đè lên mọi thứ */
+    pointer-events: none; /* CHÌA KHÓA: Cho phép click chuột xuyên qua bong bóng */
+    overflow: hidden; /* Giấu những bong bóng bay ra khỏi viền */
+}
+
+.ambient-bubble {
+    position: absolute;
+    bottom: -150px; /* Xuất phát từ tít dưới đáy màn hình */
+    background: rgba(255, 255, 255, 0.05); /* Trắng siêu mờ */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Viền kính bóng bẩy */
+    border-radius: 50%;
+    /* Hiệu ứng bay lên với gia tốc tự nhiên */
+    animation: bubbleRise 15s infinite ease-in;
+}
+
+/* Đa dạng hóa: Kích thước, vị trí xuất phát, tốc độ và thời gian chờ của 10 bong bóng */
+.ambient-bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 8s; }
+.ambient-bubble:nth-child(2) { width: 20px; height: 20px; left: 20%; animation-duration: 5s; animation-delay: 1s; }
+.ambient-bubble:nth-child(3) { width: 50px; height: 50px; left: 35%; animation-duration: 10s; animation-delay: 2s; }
+.ambient-bubble:nth-child(4) { width: 30px; height: 30px; left: 50%; animation-duration: 7s; animation-delay: 0s; }
+.ambient-bubble:nth-child(5) { width: 25px; height: 25px; left: 60%; animation-duration: 6s; animation-delay: 3s; }
+.ambient-bubble:nth-child(6) { width: 45px; height: 45px; left: 75%; animation-duration: 11s; animation-delay: 1s; }
+.ambient-bubble:nth-child(7) { width: 15px; height: 15px; left: 85%; animation-duration: 4s; animation-delay: 2s; }
+.ambient-bubble:nth-child(8) { width: 35px; height: 35px; left: 90%; animation-duration: 9s; animation-delay: 4s; }
+.ambient-bubble:nth-child(9) { width: 20px; height: 20px; left: 5%; animation-duration: 6s; animation-delay: 5s; }
+.ambient-bubble:nth-child(10) { width: 60px; height: 60px; left: 65%; animation-duration: 12s; animation-delay: 6s; }
+
+/* Kịch bản bay: Lắc lư sang trái/phải như bong bóng nước thật */
+@keyframes bubbleRise {
+    0% {
+        bottom: -150px;
+        transform: translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Hiện ra mờ mờ */
+    }
+    50% {
+        transform: translateX(30px); /* Lắc sang phải */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        bottom: 110vh; /* Bay vượt qua đỉnh màn hình */
+        transform: translateX(-30px); /* Lắc sang trái */
+        opacity: 0; /* Tan biến */
+    }
+}
