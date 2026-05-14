@@ -904,13 +904,13 @@
 
 
             <div class="title-wrapper">
-                <h1 class="main-title">
-                     A FISHERMAN’S EXPEDITION <br>
-                    TO PRESERVE THE ORIGINAL SWEETNESS
+                <h1 class="hero-main-title">
+                    EXPEDITION TO PRESERVE<br>
+                    THE ORIGINAL SWEETNESS
                 </h1>
             </div>
             <!-- <p class="hero-subtitle">From the ocean's depths to your dining table</p> -->
-            <a href="#scrapbook-section" class="hero-cta" id="explore-btn">Explore!</a>
+            <a href="##sea-secrets" class="hero-cta" id="explore-btn">Explore!</a>
         </div>
 
         
@@ -925,18 +925,46 @@
                     <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
                 </defs>
                 <g class="wave-parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.15)" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.25)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.1)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="rgba(255,255,255,0.4)" />
+                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.1)" />
+                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.2)" />
+                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(10, 37, 78, 0.5)" />
+                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#0a254e" />
                 </g>
             </svg>
         </div>
-        <div class="parallax-content reveal-scale">
+        <div class="parallax-content" style="position: relative; z-index: 10; width: 100%;">
             
             <audio id="bgAudio" loop>
                 <source src="bg-audio.mp3" type="audio/mpeg">
             </audio>
+            <div id="sea-secrets" class="did-you-know-container">
+    <h3 class="liquid-text">SEA SECRETS</h3>
+    <p class="dyk-instruction">✨ Hover to reveal deep sea secrets ✨</p>
+    
+    <div class="bubble-grid">
+        <div class="bubble-item">
+            <div class="bubble-icon">🧪</div>
+            <div class="bubble-content">
+                <h4>Stress & Sweetness</h4>
+                <p>Fish produce lactic acid when stressed, making their flesh taste sour. Fishermen must keep them calm to preserve their natural sweetness.</p>
+            </div>
+        </div>
+        <div class="bubble-item">
+            <div class="bubble-icon">🦞</div>
+            <div class="bubble-content">
+                <h4>Blue Blood</h4>
+                <p>Lobsters have blue blood due to a protein called hemocyanin, which carries oxygen throughout their body!</p>
+            </div>
+        </div>
+        <div class="bubble-item">
+            <div class="bubble-icon">🦑</div>
+            <div class="bubble-content">
+                <h4>3 Hearts</h4>
+                <p>Squids have three hearts. When they swim fast to escape predators, their main heart stops beating temporarily!</p>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </section>
 
@@ -1023,22 +1051,17 @@
     <div class="scrapbook-container">
         
         <!-- Ảnh 1: Tàu cá đêm (Ở giữa, nằm ngang) -->
-        <figure class="img-wrapper scrap-img img-boat">
-            <img src="ganhca1.PNG" alt="Tàu cá đêm">
-            <figcaption class="hover-caption">Fishing boats at dawn in Quang Ninh waters</figcaption>
-        </figure>
+        <div class="img-wrapper scrap-img img-boat">
+            <img src="ganhca1.PNG" alt="Fishing boats at dawn in Quang Ninh waters">
+        </div>
 
-        <!-- Ảnh 2: Bữa tiệc hải sản (Góc phải trên) -->
-        <figure class="img-wrapper scrap-img img-food">
-            <img src="bantiec1.JPG" alt="Bàn tiệc hải sản">
-            <figcaption class="hover-caption">A lavish seafood feast prepared fresh</figcaption>
-        </figure>
+        <div class="img-wrapper scrap-img img-food">
+            <img src="bantiec1.JPG" alt="A lavish seafood feast prepared fresh">
+        </div>
 
-        <!-- Ảnh 3: Câu mực (Góc trái dưới) -->
-        <figure class="img-wrapper scrap-img img-squid">
-            <img src="caumuc1.PNG" alt="Câu mực">
-            <figcaption class="hover-caption">Squid fishing under the moonlight</figcaption>
-        </figure>
+        <div class="img-wrapper scrap-img img-squid">
+            <img src="caumuc1.PNG" alt="Squid fishing under the moonlight">
+        </div>
 
         <!-- Khối Quote trích dẫn (Góc phải dưới) -->
         <div class="quote-box">
@@ -1056,9 +1079,8 @@
         <div class="split-left jellyfish-bg">
             <div class="dark-overlay-left"></div>
 
-            <!-- CỤM TIÊU ĐỀ (Ảnh nền Canva + Chữ) -->
+            <!-- CỤM TIÊU ĐỀ -->
             <div class="title-graphic-container">
-                <!-- Bạn nhớ chèn đúng tên ảnh mảng màu nước xuất từ Canva nhé -->
                 <img src="khung1.png" alt="Nền tiêu đề đồ họa" class="canva-bg-img">
                 <h2 class="canva-overlay-text">THE SOUND OF ENGINES<br>AND THE RACE TO<br>PRESERVE FRESHNESS</h2>
             </div>
@@ -1071,21 +1093,18 @@
 
         <!-- CỘT PHẢI (3 Ảnh vắt ngang) -->
         <div class="split-right">
-            <figure class="img-wrapper edge-img">
-                <img src="hainui2.png" alt="Vịnh Hạ Long đêm">
-                <figcaption class="edge-caption">Ha Long Bay at midnight</figcaption>
-            </figure>
-            <figure class="img-wrapper edge-img">
-                <img src="dentau2.png" alt="Ngư dân khiêng hải sản từ tàu về bờ">
-                <figcaption class="edge-caption">Fishermen unloading the catch</figcaption>
-            </figure>
-            <figure class="img-wrapper edge-img">
-                <img src="cauhong2.png" alt="Cầu Bãi Cháy">
-                <figcaption class="edge-caption">Baai Chay Bridge illuminated</figcaption>
-            </figure>
+            <div class="img-wrapper edge-img">
+                <img src="hainui2.png" alt="Ha Long Bay at midnight">
+            </div>
+            
+            <div class="img-wrapper edge-img">
+                <img src="dentau2.png" alt="Fishermen unloading the catch">
+            </div>
+            
+            <div class="img-wrapper edge-img">
+                <img src="cauhong2.png" alt="Bai Chay Bridge illuminated">
+            </div>
         </div>
-
-    </div>
 
     <!-- HỆ THỐNG SÓNG VÀ THUYỀN (Vẫn giữ nguyên cho bạn) -->
     <div class="animated-ocean">
@@ -1111,13 +1130,16 @@
                 <img src="vet_mau_nuoc.png" alt="Trang trí màu nước" class="watercolor-splash">
                 
                 <p class="preservation-text">
-                    The moment the nets pass the gunwale, a stringent preservation routine is initiated. To avoid degradation, the catch is never left to rot on deck; instead, it is immediately placed in oxygenated tanks or buried in ice crushed from saltwater. This is essential for maintaining a perfect 0°C-4°C environment, preserving the cellular structure and immaculate taste of the ingredients from the moment they are removed from the water
+                    The moment the nets pass the gunwale, a stringent preservation routine is initiated. To avoid degradation, 
+                    the catch is never left to rot on deck; instead, it is immediately placed in oxygenated tanks or buried in 
+                    ice crushed from saltwater. This is essential for maintaining a perfect 0°C-4°C environment, preserving the 
+                    cellular structure and immaculate taste of the ingredients from the moment they are removed from the water
                 </p>
             </div>
 
             <!-- Cột 2: Ảnh thuyền lớn -->
             <div class="main-image-column">
-                <img src="thuyenvang3.PNG" alt="Tàu cá cập bến" class="rounded-img">
+                <img src="thuyenvang3.PNG" alt="Fishing boat at the dock" class="rounded-img">
             </div>
             
         </div>
@@ -1125,13 +1147,13 @@
         <!-- HÀNG DƯỚI: 3 Ảnh vuông phân loại hải sản -->
         <div class="bottom-row">
             <div class="small-image-wrapper">
-                <img src="chauxanh3.PNG" alt="Phân loại hải sản" class="rounded-img">
+                <img src="chauxanh3.PNG" alt="Fishing catch sorting" class="rounded-img">
             </div>
             <div class="small-image-wrapper">
-                <img src="catuoi3.PNG" alt="Khay cá" class="rounded-img">
+                <img src="catuoi3.PNG" alt="Fish tray" class="rounded-img">
             </div>
             <div class="small-image-wrapper">
-                <img src="chosang3.PNG" alt="Hải sản tươi" class="rounded-img">
+                <img src="chosang3.PNG" alt="Fresh seafood" class="rounded-img">
             </div>
         </div>
 
@@ -1143,12 +1165,12 @@
     <div class="grid-container">
         <!-- Ô lưới 1: Ảnh xe tải 1 -->
         <div class="grid-item image-left">
-            <img src="xetai4.PNG" alt="Xe tải tại chợ đêm" class="logistics-img rounded-img">
+            <img src="xetai4.PNG" alt="Truck at the night market" class="logistics-img rounded-img">
         </div>
 
         <!-- Ô lưới 2: Ảnh xe tải 2 -->
         <div class="grid-item image-right">
-            <img src="xetaixa4.PNG" alt="Đoàn xe tải ban đêm" class="logistics-img rounded-img">
+            <img src="xetaixa4.PNG" alt="Nighttime truck convoy" class="logistics-img rounded-img">
         </div>
 
         <!-- Ô lưới 3: Tiêu đề -->
@@ -1171,7 +1193,7 @@
 
     <!-- HỆ THỐNG SÓNG VÀ THUYỀN (Dùng chung với Section 2) -->
     <div class="animated-ocean">
-        <img src="thuyen.png" alt="Thuyền" class="boat-on-waves">
+        <img src="thuyen.png" alt="Fishing boat" class="boat-on-waves">
         <div class="wave wave-back"></div>
         <div class="wave wave-middle"></div>
         <div class="wave wave-front"></div>
@@ -1184,8 +1206,8 @@
     <div class="cyber-terminal">
         <div class="terminal-header">
             <div>
-                <h3 class="system-title">AERATION PROTOCOL v2.0</h3>
-                <p class="system-sub">Load 10 units. AVOID RED THERMAL BOMBS!</p>
+                <h3 class="system-title">GAME | AERATION PROTOCOL v2.0</h3>
+                <p class="system-sub">Click to the icons to load 10 units. AVOID RED THERMAL BOMBS!</p>
             </div>
             <div class="metrics">
                 <div class="metric-box">
@@ -1254,10 +1276,10 @@
 
             <div class="tech-images-column">
                 <div class="img-wrapper">
-                    <img src="tailanh5.PNG" alt="Bên trong thùng xe sục khí" class="rounded-img">
+                    <img src="tailanh5.PNG" alt="Inside the aeration truck" class="rounded-img">
                 </div>
                 <div class="img-wrapper">
-                    <img src="tailanhxanh5.PNG" alt="Hệ thống làm lạnh" class="rounded-img">
+                    <img src="tailanhxanh5.PNG" alt="Cooling system" class="rounded-img">
                 </div>
             </div>
 
@@ -1301,7 +1323,7 @@
 
     <!-- HỆ THỐNG SÓNG VÀ THUYỀN QUEN THUỘC -->
     <div class="animated-ocean">
-        <img src="thuyen.png" alt="Thuyền" class="boat-on-waves">
+        <img src="thuyen.png" alt="Fishing boat" class="boat-on-waves">
         <div class="wave wave-back"></div>
         <div class="wave wave-middle"></div>
         <div class="wave wave-front"></div>
@@ -1326,7 +1348,7 @@
 
             <!-- 2. Ảnh tròn đè lên góc phải dưới -->
             <div class="circle-image-wrapper">
-                <img src="catuoi3.PNG" alt="Cá ngừ bảo quản lạnh" class="circle-img">
+                <img src="catuoi3.PNG" alt="Fresh fish" class="circle-img">
             </div>
 
         </div>
@@ -1354,15 +1376,15 @@
         <!-- Ảnh 1 -->
         <div class="grid-cell">
             <figure class="hover-figure tall-img">
-                <img src="bevoivoi7.png" alt="Bể sục oxy" class="hover-img">
-                <figcaption class="hover-caption">Hệ thống sục oxy liên tục 24/7</figcaption>
+                <img src="bevoivoi7.png" alt="Oxygenated tank" class="hover-img">
+                <figcaption class="hover-caption">Continuous oxygenation system 24/7</figcaption>
             </figure>
         </div>
         <!-- Ảnh 2 -->
         <div class="grid-cell">
             <figure class="hover-figure tall-img">
-                <img src="betomhum7.PNG" alt="Tôm hùm bông" class="hover-img">
-                <figcaption class="hover-caption">Tôm hùm bông giữ nguyên độ tươi ngon</figcaption>
+                <img src="betomhum7.PNG" alt="Blue lobster" class="hover-img">
+                <figcaption class="hover-caption">Blue lobster maintains freshness and flavor</figcaption>
             </figure>
         </div>
         <!-- Hộp văn bản xanh cổ vịt (GIỮ NGUYÊN) -->
@@ -1376,22 +1398,22 @@
         <!-- Ảnh 3 -->
         <div class="grid-cell">
             <figure class="hover-figure wide-img">
-                <img src="bebaongu7.PNG" alt="Bể hải sản" class="hover-img">
-                <figcaption class="hover-caption">Phân loại hải sản cẩn thận</figcaption>
+                <img src="bebaongu7.PNG" alt="Seafood tank" class="hover-img">
+                <figcaption class="hover-caption">Modern seafood storage tank</figcaption>
             </figure>
         </div>
         <!-- Ảnh 4 -->
         <div class="grid-cell">
             <figure class="hover-figure wide-img">
-                <img src="bebe7.PNG" alt="Bề bề" class="hover-img">
-                <figcaption class="hover-caption">Bề bề (tôm tít) khỏe mạnh, bơi khỏe</figcaption>
+                <img src="bebe7.PNG" alt="Fresh prawns" class="hover-img">
+                <figcaption class="hover-caption">Fresh prawns healthy and strong</figcaption>
             </figure>
         </div>
         <!-- Ảnh 5 -->
         <div class="grid-cell">
             <figure class="hover-figure wide-img">
                 <img src="betomxanh7.PNG" alt="Rổ mực và tôm" class="hover-img">
-                <figcaption class="hover-caption">Sẵn sàng đóng thùng xốp chuyên dụng</figcaption>
+                <figcaption class="hover-caption">Ready to be packed in specialized foam boxes</figcaption>
             </figure>
         </div>
 </section>
@@ -1402,7 +1424,7 @@
         
         <!-- CỘT TRÁI: Ảnh nhân vật -->
         <div class="quote-image-col">
-            <img src="mrqi.jpg" alt="Mr. Qi - Khách du lịch quốc tế" class="character-img">
+            <img src="mrqi.jpg" alt="Mr. Qi - International Tourist" class="character-img">
         </div>
 
         <!-- CỘT PHẢI: Khối trích dẫn (Quote box) -->
@@ -1424,7 +1446,7 @@
 
     <!-- HỆ THỐNG SÓNG VÀ THUYỀN (Tiếp tục giữ lại điểm nhấn này) -->
     <div class="animated-ocean">
-        <img src="thuyen.png" alt="Thuyền" class="boat-on-waves">
+        <img src="thuyen.png" alt="Floating boat" class="boat-on-waves">
         <div class="wave wave-back"></div>
         <div class="wave wave-middle"></div>
         <div class="wave wave-front"></div>
@@ -1451,16 +1473,16 @@
         <div class="depth-gallery-col">
             <div class="gallery-grid">
                 <div class="grid-photo">
-                    <img src="8bexanh.PNG" alt="Hệ thống bể cá 1" class="rounded-img">
+                    <img src="8bexanh.PNG" alt="Fresh fish tank" class="rounded-img">
                 </div>
                 <div class="grid-photo">
-                    <img src="8besuc.PNG" alt="Hệ thống lọc" class="rounded-img">
+                    <img src="8besuc.PNG" alt="Filtration system" class="rounded-img">
                 </div>
                 <div class="grid-photo">
-                    <img src="8becui.PNG" alt="Hệ thống bể cá 2" class="rounded-img">
+                    <img src="8becui.PNG" alt="Oxygenated tank" class="rounded-img">
                 </div>
                 <div class="grid-photo">
-                    <img src="8bexa.PNG" alt="Chi tiết ống nước" class="rounded-img">
+                    <img src="8bexa.PNG" alt="Pipe details" class="rounded-img">
                 </div>
             </div>
         </div>
@@ -1469,7 +1491,7 @@
 
     <!-- Sóng biển dưới đáy (Dùng chung bộ cũ) -->
     <div class="animated-ocean">
-        <img src="thuyen.png" alt="Thuyền" class="boat-on-waves">
+        <img src="thuyen.png" alt="Floating boat" class="boat-on-waves">
         <div class="wave wave-back"></div>
         <div class="wave wave-middle"></div>
         <div class="wave wave-front"></div>
@@ -1514,7 +1536,7 @@
         <!-- CỘT TRÁI: Ảnh nhỏ & Khối văn bản -->
         <div class="precision-left-col">
             <div class="img-wrapper">
-                <img src="9phongvan.PNG" alt="Kiểm tra nhiệt độ" class="precision-img">
+                <img src="9phongvan.PNG" alt="Temperature monitoring" class="precision-img">
             </div>
             
             <div class="precision-text-box">
@@ -1529,10 +1551,10 @@
         <!-- CỘT PHẢI: 2 Ảnh lớn xếp dọc -->
         <div class="precision-right-col">
             <div class="img-wrapper">
-                <img src="9khach.jpg" alt="Khách tham quan bể" class="precision-img">
+                <img src="9khach.jpg" alt="International tourist visiting the tank" class="precision-img">
             </div>
             <div class="img-wrapper">
-                <img src="9tom.PNG" alt="Bể sục khí xanh" class="precision-img">
+                <img src="9tom.PNG" alt="Oxygenated fish tank" class="precision-img">
             </div>
         </div>
 
@@ -1544,9 +1566,9 @@
     
     <!-- TẦNG TRÊN: Dải 3 ảnh trải ngang liền kề -->
     <div class="journey-top-banner">
-        <img src="10mat.jpeg" alt="Ngư dân câu mực">
-        <img src="10cho.PNG" alt="Chợ đêm hải sản">
-        <img src="10caidam.PNG" alt="Chợ ban ngày">
+        <img src="10mat.jpeg" alt="Squid's ink at teammate's face">
+        <img src="10cho.PNG" alt="Night seafood market">
+        <img src="10caidam.PNG" alt="Daytime seafood market">
     </div>
 
     <!-- TẦNG DƯỚI: Nội dung tổng kết -->
@@ -1561,14 +1583,14 @@
 
         <!-- Cột phải: Bàn tiệc hải sản hình Oval -->
         <div class="journey-image-col">
-            <img src="10tiec.JPG" alt="Bàn tiệc hải sản hoành tráng" class="oval-feast-img">
+            <img src="10tiec.JPG" alt="Seafood feast table" class="oval-feast-img">
         </div>
 
     </div>
 
     <!-- HỆ THỐNG SÓNG BIỂN CHỐT LẠI TRANG -->
     <div class="animated-ocean">
-        <img src="thuyen.png" alt="Thuyền" class="boat-on-waves">
+        <img src="thuyen.png" alt="Floating boat" class="boat-on-waves">
         <div class="wave wave-back"></div>
         <div class="wave wave-middle"></div>
         <div class="wave wave-front"></div>
@@ -1577,34 +1599,32 @@
 </section>
 
      <!--Vid-->
-<section style="position: relative; width: 100%; padding: 100px 20px; display: flex; justify-content: center; align-items: center;
-    /* >> ĐÃ THÊM ẢNH NỀN ĐẠI DƯƠNG TẠI ĐÂY << */
-    background: linear-gradient(rgba(0, 34, 68, 0.6), rgba(0, 34, 68, 0.8)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80'); 
-    background-size: cover; background-position: center; background-attachment: fixed;">
+<section id="the-journey" class="story-slide light-cloud-theme" style="position: relative; width: 100%; padding: 100px 20px; display: flex; justify-content: center; align-items: center; background: linear-gradient(rgba(0, 34, 68, 0.6), rgba(0, 34, 68, 0.8)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); background-size: cover; background-position: center; background-attachment: fixed;">
 
-    <div style="max-width: 1150px; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: stretch; gap: 0; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
+    <div style="max-width: 1150px; width: 100%; display: flex; flex-direction: row; flex-wrap: wrap; align-items: stretch; gap: 0;">
         
-        <div class="reveal-fade" style="flex: 1; min-width: 320px; background-color: #004d7a; padding: 60px 45px; display: flex; flex-direction: column; justify-content: center;">
-            <span style="display: block; color: #00d2ff; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; font-weight: bold;">
-                Cinematic Experience
+        <div style="flex: 1; min-width: 320px; background-color: #004d7a; padding: 60px 45px; display: flex; flex-direction: column; justify-content: center;">
+            <span style="display: block; color: #00d2ff; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px;">
+                CINEMATIC EXPERIENCE
             </span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #ffffff; line-height: 1.2; margin: 0; font-weight: 700; text-transform: uppercase;">
-                The Art of <br> Preserving ocean's gifts
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.4rem; color: #ffffff; line-height: 1.2; margin: 0;">
+                THE ART OF <br> PRESERVING OCEAN'S GIFTS
             </h2>
             <div style="width: 50px; height: 2px; background: #00d2ff; margin-top: 25px;"></div>
         </div>
 
-        <div class="reveal-up" style="flex: 1.8; min-width: 400px; background: #000; line-height: 0;">
-            <div style="position: relative; padding-top: 56.25%; /* Tỷ lệ 16:9 */ width: 100%;">
+        <div style="flex: 1.8; min-width: 400px; background: #000; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+            
+            <div style="position: relative; padding-top: 56.25%; width: 100%;">
                 <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-                        src="https://www.youtube.com/embed/9-UWytna9XY" 
-                        title="YouTube video player" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
+                    src="https://www.youtube.com/embed/C1TTv0DfmvQ" 
+                    title="YouTube video player" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
                 </iframe>
             </div>
-        </div>
 
+        </div>
     </div>
 </section>
 
@@ -1881,21 +1901,15 @@
             const pollSubmitBtn = document.getElementById('pollSubmitBtn');
             const pollResults = document.getElementById('pollResults');
             let selectedVote = null;
-            
-            // Load existing votes from localStorage
             let pollVotes = JSON.parse(localStorage.getItem('seafoodPollVotes')) || {
                 1: Math.floor(Math.random() * 50) + 20,
                 2: Math.floor(Math.random() * 50) + 30,
                 3: Math.floor(Math.random() * 50) + 15
             };
             let hasVoted = localStorage.getItem('seafoodPollVoted') === 'true';
-            
-            // If already voted, show results
             if (hasVoted) {
                 showPollResults();
             }
-            
-            // Option click handler
             pollOptions.forEach(option => {
                 option.addEventListener('click', () => {
                     if (hasVoted) return;
@@ -1905,21 +1919,18 @@
                     selectedVote = option.dataset.vote;
                 });
             });
-            
-            // Submit vote
             pollSubmitBtn.addEventListener('click', () => {
                 if (selectedVote && !hasVoted) {
                     pollVotes[selectedVote]++;
                     localStorage.setItem('seafoodPollVotes', JSON.stringify(pollVotes));
                     localStorage.setItem('seafoodPollVoted', 'true');
+                    localStorage.setItem('seafoodPollVotedChoice', selectedVote);
                     hasVoted = true;
                     showPollResults();
                 }
             });
-            
             function showPollResults() {
                 const total = pollVotes[1] + pollVotes[2] + pollVotes[3];
-                
                 document.getElementById('result1').textContent = Math.round((pollVotes[1] / total) * 100) + '%';
                 document.getElementById('result2').textContent = Math.round((pollVotes[2] / total) * 100) + '%';
                 document.getElementById('result3').textContent = Math.round((pollVotes[3] / total) * 100) + '%';

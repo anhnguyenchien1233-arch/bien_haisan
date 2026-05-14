@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+}
 /* ==========================================
    SEAFOOD LANDING PAGE STYLES
    ========================================== */
@@ -2164,20 +2167,23 @@
     font-family: 'Lora', serif;
     font-size: 1.15rem;
     line-height: 1.6;
-    color: #222;
-    margin: auto 0; /* Tự động đẩy chữ ra chính giữa theo chiều dọc */
+    color: #1a2a3a; /* Đổi sang xanh đen sẫm cho nét */
+    margin: auto 0;
     position: relative;
-    z-index: 2; /* Chữ nổi lên trên mảng màu nước */
+    z-index: 2;
+    text-shadow: 
+        0 0 15px rgba(255, 255, 255, 1),
+        0 0 25px rgba(255, 255, 255, 0.9),
+        1px 1px 2px rgba(255, 255, 255, 0.8);
 }
-
 .watercolor-splash {
     position: absolute;
     bottom: -20px;
     left: 20px;
-    width: 110%; /* Cho tràn nhẹ ra ngoài để tự nhiên */
-    z-index: 1;
+    width: 110%;
+    z-index: 0;
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.45; 
 }
 
 /* Cột Ảnh lớn */
@@ -3123,10 +3129,6 @@ cắt cúp (object-fit: cover) cực đẹp và có hiệu ứng nổi lên khi 
    PHÂN CẢNH 12: ĐỘ CHÍNH XÁC TỪ DỮ LIỆU
    ========================================= */
 
-/* =========================================
-   PHÂN CẢNH 12: ĐỘ CHÍNH XÁC TỪ DỮ LIỆU
-   ========================================= */
-
 .light-cream-theme {
     background: linear-gradient(to bottom, #0a192f 0%, #fcfaf5 150px, #fcfaf5 100%);
     background-color: #fcfaf5; 
@@ -3639,4 +3641,184 @@ h1, h2, h3, h4, h5, h6 {
 .image-caption-wrapper:hover .modern-caption {
     opacity: 1;
     transform: translateY(0);
+}
+/* =========================================
+   CHUYỂN CẢNH TINH TẾ: DEEP DIVE TRANSITION
+   ========================================= */
+
+/* 1. Ép màu khối vuông bên dưới khớp 100% với màu sóng đáy */
+.canva-block.block-top-dark {
+    background-color: #0a254e !important; 
+    border-top: none; /* Xóa mọi đường viền nếu có */
+}
+
+/* 2. Kéo dải sóng xích xuống 2px để triệt tiêu hoàn toàn khe hở nứt gãy màu trắng */
+.parallax-divider .waves-svg {
+    display: block;
+    margin-bottom: -2px; 
+}
+/* =========================================
+   SEA SECRETS BUBBLES (DID YOU KNOW)
+   ========================================= */
+.did-you-know-container {
+    margin-top: 60px;
+    width: 100%;
+    max-width: 1100px;
+    text-align: center; /* Căn giữa toàn bộ */
+}
+
+/* --- HIỆU ỨNG NƯỚC CHẢY TRONG CHỮ (TƯƠNG PHẢN CAO) --- */
+.liquid-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8rem; /* Cho to thêm một chút xíu nữa */
+    font-weight: 900;
+    margin-bottom: 10px;
+    
+    /* 1. Đổi gradient: Sáng hơn, dải màu gắt hơn (Thêm trắng băng và cyan) */
+    background: linear-gradient(
+        90deg, 
+        #ffffff 0%, 
+        #00d2ff 25%, 
+        #e6f1ff 50%, 
+        #64ffda 75%, 
+        #ffffff 100%
+    );
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    /* 2. CHÌA KHÓA: Tạo một viền trắng mờ bọc quanh chữ để tách biệt khỏi nền */
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    
+    /* 3. CHÌA KHÓA: Dùng drop-shadow thay vì text-shadow để đổ một lớp bóng đen thật đậm phía dưới dải màu */
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.9));
+    
+    /* Chuyển động liên tục */
+    animation: liquidFlow 4s linear infinite;
+}
+
+@keyframes liquidFlow {
+    to { background-position: 200% center; }
+}
+/* --- DÒNG CHỈ DẪN HOVER NHẤP NHÁY --- */
+.dyk-instruction {
+    color: #64ffda;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    animation: pulseText 2s infinite; /* Hiệu ứng nhịp thở */
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; text-shadow: 0 0 10px rgba(100,255,218,0.5); }
+}
+
+/* --- BONG BÓNG RÕ RÀNG HƠN --- */
+.bubble-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.bubble-item {
+    position: relative;
+    width: 300px; /* Tăng size bong bóng lên một chút */
+    height: 300px;
+    
+    /* Làm nền đục hơn, viền sáng hơn để không bị chìm */
+    background: rgba(255, 255, 255, 0.08); 
+    border: 1px solid rgba(100, 255, 218, 0.4); 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    
+    border-radius: 50%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    backdrop-filter: blur(8px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer; /* Đổi thành hình bàn tay cho giống nút bấm */
+    animation: floating 6s ease-in-out infinite;
+}
+
+.bubble-item:nth-child(2) { animation-delay: -2s; }
+.bubble-item:nth-child(3) { animation-delay: -4s; }
+
+.bubble-icon {
+    font-size: 3rem; /* Tăng size icon */
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+}
+
+/* --- CHỮ BÊN TRONG (TO VÀ DỄ ĐỌC) --- */
+.bubble-content h4 {
+    color: #ffffff; /* Trắng tinh */
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; /* Tăng cỡ chữ */
+    margin-bottom: 15px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* Đổ bóng đen mờ để bật khỏi nền */
+}
+
+.bubble-content p {
+    color: #e6f1ff; /* Trắng xanh sáng */
+    font-size: 1rem; /* Tăng cỡ chữ */
+    line-height: 1.6;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+/* --- KHI HOVER --- */
+.bubble-item:hover {
+    background: rgba(10, 37, 78, 0.9); /* Khi hover, nền tối hẳn lại để chữ nổi lên 100% */
+    border-color: #64ffda;
+    transform: scale(1.05) translateY(-10px) !important;
+    box-shadow: 0 0 40px rgba(100, 255, 218, 0.3);
+    border-radius: 20px;
+}
+
+.bubble-item:hover .bubble-icon {
+    transform: scale(1.2) translateY(-10px);
+}
+
+.bubble-item:hover .bubble-content p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+/* =========================================
+   SỬA BỐ CỤC TIÊU ĐỀ HERO SECTION (BẢN CHỮ TO HOÀNH TRÁNG)
+   ========================================= */
+.hero-main-title {
+    max-width: 100% !important; 
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2; 
+    
+    /* CHÌA KHÓA LÀ ĐÂY: Phóng to size chữ hết cỡ */
+    font-size: 4.8rem !important; /* Bạn có thể tăng lên 5rem hoặc 5.5rem nếu muốn to nữa */
+    
+    /* Trang trí thêm cho chuẩn Cinematic */
+    letter-spacing: 3px; /* Giãn cách các chữ cái ra một chút cho sang trọng */
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6); /* Đổ bóng đen đậm để chữ nảy bật lên khỏi nền biển */
+}
+
+/* KHI XEM TRÊN ĐIỆN THOẠI (Màn hình nhỏ) */
+@media (max-width: 768px) {
+    .hero-main-title {
+        font-size: 2.2rem !important; /* Ép nhỏ lại trên mobile để không bị tràn màn hình */
+        letter-spacing: 1px;
+    }
 }
