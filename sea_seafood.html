@@ -148,7 +148,7 @@
     <div class="canva-block block-left-gradient"></div>
 
     <!-- ================= CÁC HOẠT TIẾT TRANG TRÍ (ELEMENTS) ================= -->
-   <!-- 1. Mảng sóng xếp lớp góc trái trên (Đã thêm đuôi vuốt nhọn vút lên) -->
+   <!-- 1. Mảng sóng xếp lớp góc trái trên-->
     <svg class="decor-element solid-waves-top-left" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <!-- Lớp nền xanh lơ nhạt to nhất -->
         <path d="M0,0 L500,0 C400,120 300,160 200,120 C100,80 50,180 0,180 Z" fill="#d0f0fd"/>
@@ -159,7 +159,7 @@
         <!-- Lớp sóng xanh biển ở trên cùng -->
         <path d="M0,0 L500,0 C400,40 300,70 200,40 C100,10 50,90 0,90 Z" fill="#6bd2e8"/>
         
-        <!-- Nhấn nhá 2 đường kẻ vút theo đuôi sóng -->
+        <!-- 2 đường kẻ vút theo đuôi sóng -->
         <path d="M40,120 Q120,160 180,100" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
         <path d="M220,70 Q320,100 420,20" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
     </svg>
@@ -213,7 +213,7 @@
         <path d="M80,250 Q100,200 90,160 T110,90 Q120,150 105,180 T100,250 Z" fill="#72d2e0" opacity="0.8"/>
         <path d="M120,250 Q135,210 125,170 T150,110 Q160,160 140,190 T145,250 Z" fill="#2b59c3" opacity="0.6"/>
         
-        <!-- Lớp 4: Nhấn nhá vài bọt biển nhỏ nổi lên từ rạn san hô -->
+        <!-- Lớp 4: Bọt biển nhỏ nổi lên từ rạn san hô -->
         <circle cx="100" cy="70" r="4" fill="#ffffff" opacity="0.6"/>
         <circle cx="130" cy="100" r="3" fill="#ffffff" opacity="0.5"/>
         <circle cx="20" cy="60" r="5" fill="#ffffff" opacity="0.7"/>
@@ -255,7 +255,6 @@
 
             <!-- CỤM TIÊU ĐỀ (Ảnh nền Canva + Chữ) -->
             <div class="title-graphic-container">
-                <!-- Bạn nhớ chèn đúng tên ảnh mảng màu nước xuất từ Canva nhé -->
                 <img src="khung1.png" alt="Nền tiêu đề đồ họa" class="canva-bg-img">
                 <h2 class="canva-overlay-text">THE SOUND OF ENGINES<br>AND THE RACE TO<br>PRESERVE FRESHNESS</h2>
             </div>
@@ -504,7 +503,6 @@
             
             <!-- 1. Khung Video -->
             <div class="video-wrapper">
-                <!-- Thay 'đường_dẫn_video.mp4' bằng file thực tế của bạn -->
                 <video controls class="rounded-video">
                     <source src="cabang.mp4" type="video/mp4">
                     Trình duyệt của bạn không hỗ trợ thẻ video.
@@ -552,7 +550,7 @@
                 <figcaption class="hover-caption">Tôm hùm bông giữ nguyên độ tươi ngon</figcaption>
             </figure>
         </div>
-        <!-- Hộp văn bản xanh cổ vịt (GIỮ NGUYÊN) -->
+        <!-- Hộp văn bản xanh cổ vịt -->
         <div class="grid-cell vitality-text-box">
             <p class="vitality-text">
                 High-vitality species, such as lobster and squid, are promptly moved to oxygenated tanks. These seaside basins keep the catch at top condition
@@ -609,7 +607,7 @@
 
     </div>
 
-    <!-- HỆ THỐNG SÓNG VÀ THUYỀN (Tiếp tục giữ lại điểm nhấn này) -->
+    <!-- HỆ THỐNG SÓNG VÀ THUYỀN -->
     <div class="animated-ocean">
         <img src="thuyen.png" alt="Thuyền" class="boat-on-waves">
         <div class="wave wave-back"></div>
@@ -654,7 +652,7 @@
 
     </div>
 
-    <!-- Sóng biển dưới đáy (Dùng chung bộ cũ) -->
+    <!-- Sóng biển dưới đáy -->
     <div class="animated-ocean">
         <img src="thuyen.png" alt="Thuyền" class="boat-on-waves">
         <div class="wave wave-back"></div>
@@ -765,7 +763,6 @@
 
      <!--Vid-->
 <section style="position: relative; width: 100%; padding: 100px 20px; display: flex; justify-content: center; align-items: center;
-    /* >> ĐÃ THÊM ẢNH NỀN ĐẠI DƯƠNG TẠI ĐÂY << */
     background: linear-gradient(rgba(0, 34, 68, 0.6), rgba(0, 34, 68, 0.8)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&q=80'); 
     background-size: cover; background-position: center; background-attachment: fixed;">
 
@@ -1052,41 +1049,30 @@
 </body>
 
 </html>
-<!-- BỘ MÁY ĐIỀU KHIỂN HIỆU ỨNG CUỘN TRANG (SCROLL REVEAL) -->
+<!-- BỘ ĐIỀU KHIỂN HIỆU ỨNG CUỘN TRANG (SCROLL REVEAL) -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        
-        // 1. Tự động thu thập tất cả các khối nội dung cần hiệu ứng trên toàn trang web
         const elementsToReveal = document.querySelectorAll(`
             .title-section, .text-box, .intro-content, 
             .pulse-container, .technique-container, .vitality-grid,
             .quote-container, .depth-container, .precision-container,
             .journey-top-banner, .journey-bottom-content
         `);
-
-        // 2. Phủ áo tàng hình (class scroll-hidden) lên tất cả các khối đó khi web vừa load
         elementsToReveal.forEach((el) => {
             el.classList.add('scroll-hidden');
         });
-
-        // 3. Tạo một "Camera" theo dõi hành vi cuộn chuột của người dùng
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                // Nếu khối nội dung đi vào tầm nhìn của màn hình
                 if (entry.isIntersecting) {
-                    // Xóa áo tàng hình, thêm class scroll-show để khối đó lướt lên
                     entry.target.classList.add('scroll-show');
                     
-                    // (Tùy chọn) Ngừng theo dõi sau khi đã hiện ra, để lúc cuộn ngược lên nó không bị giấu đi nữa
                     // observer.unobserve(entry.target); 
                 }
             });
         }, {
-            // Thiết lập: Chờ khối đó lộ diện được 15% diện tích thì mới bắt đầu cho hiện ra
             threshold: 0.15 
         });
 
-        // 4. Kích hoạt Camera cho tất cả các khối nội dung
         elementsToReveal.forEach((el) => observer.observe(el));
     });
 </script>
