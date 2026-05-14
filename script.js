@@ -380,15 +380,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup back button when article view exists
     setupBackButton();
 });
+// --- BẮT ĐẦU PHẦN SỬA LỖI NÚT EXPLORE ---
 document.addEventListener('DOMContentLoaded', () => {
     
+    // 1. Tìm đúng nút Explore 
     const exploreBtn = document.getElementById('explore-btn'); 
+    
+    // 2. Tìm đúng thẻ audio (Chữ A viết hoa, đã khớp với file HTML của bạn)
     const bgAudio = document.getElementById('bgAudio'); 
 
     if (exploreBtn) {
         exploreBtn.addEventListener('click', (e) => {
-            e.preventDefault(); 
+            e.preventDefault(); // Ngăn trình duyệt giật trang lên đầu
 
+            // Xử lý bật/tắt nhạc
             if (bgAudio) {
                 if (bgAudio.paused) {
                     bgAudio.play();
@@ -398,6 +403,8 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 alert("Lỗi: Không tìm thấy loa phát nhạc (bgAudio) trong HTML!");
             }
+
+            // Cuộn mượt mà xuống dưới 1 màn hình
             window.scrollBy({
                 top: window.innerHeight, 
                 behavior: 'smooth'
@@ -407,7 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Không tìm thấy nút Explore trên trang web này.");
     }
 });
-
+// --- KẾT THÚC PHẦN SỬA LỖI ---
+// =========================================
 document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-cyber-btn');
     const retryBtn = document.getElementById('retry-btn');
@@ -508,38 +516,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-// ======================
-// GLASSMORPHISM CAPTION
-// ======================
+// =========================================
+// TỰ ĐỘNG THÊM HIỆU ỨNG CHÚ THÍCH (GLASSMORPHISM CAPTION) - PHIÊN BẢN FULL
+// =========================================
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Đã gom TẤT CẢ các khu vực chứa ảnh dựa trên cấu trúc HTML của bạn
     const targetSelectors = [
         'img.character-img', 
         'img.precision-img', 
         '.journey-top-banner img', 
         'img.oval-feast-img', 
-        '.scrap-img img',              
-        '.edge-img img',               
-        '.main-image-column img',       
-        '.small-image-wrapper img',     
-        'img.logistics-img',            
-        '.tech-images-column img',      
-        '.pulse-gallery-column img',    
-        '.gallery-grid img'             
+        '.scrap-img img',               // Scrapbook
+        '.edge-img img',                // Chuyến đi đêm (Vịnh Hạ Long, Cầu Bãi Cháy)
+        '.main-image-column img',       // Bảo quản hải sản (Tàu cá cập bến)
+        '.small-image-wrapper img',     // Bảo quản hải sản (Phân loại)
+        'img.logistics-img',            // Đội xe hậu cần
+        '.tech-images-column img',      // Hệ thống làm lạnh
+        '.pulse-gallery-column img',    // Nhịp đập đại dương (Chợ hải sản)
+        '.gallery-grid img'             // Hệ thống bể cá nhà hàng
     ].join(', ');
 
     const imagesToEnhance = document.querySelectorAll(targetSelectors);
 
     imagesToEnhance.forEach(img => {
+        // LỚP PHÒNG THỦ: Tránh tuyệt đối thuyền hoạt họa và sóng biển
         if (img.classList.contains('boat-on-waves') || img.src.includes('thuyen.png')) {
             return; // Bỏ qua, không làm gì cả
         }
 
+        // Lấy nội dung chú thích
         const captionText = img.getAttribute('alt');
         if (!captionText || captionText.trim() === '') return;
 
+        // Tránh tình trạng bọc 2 lần nếu trang web load lại
         if (img.parentElement.classList.contains('image-caption-wrapper')) return;
 
+        // Tạo hộp chứa và bọc ảnh lại
         const wrapper = document.createElement('div');
         wrapper.className = 'image-caption-wrapper';
 
