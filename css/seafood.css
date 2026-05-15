@@ -3902,3 +3902,21 @@ h1, h2, h3, h4, h5, h6 {
         opacity: 0; /* Tan biến */
     }
 }
+/* =========================================
+   THẺ LAST EDITED (GÓC TRÊN CÙNG BÊN PHẢI)
+   ========================================= */
+.last-edited-tag {
+    position: absolute; /* Ghim chết ở góc trên cùng của trang */
+    top: 20px; /* Cách mép trên 20px */
+    right: 30px; /* Cách mép phải 30px */
+    
+    font-family: 'Lora', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6); /* Màu trắng mờ 60% cho tinh tế */
+    letter-spacing: 1px;
+    z-index: 1000; /* Đảm bảo nổi lên trên cùng, không bị ảnh đè */
+    pointer-events: none; /* Không cản trở việc click chuột vào các phần tử bên dưới */
+    
+    /* Phủ một lớp bóng đen siêu mỏng phòng trường hợp góc ảnh bị chói sáng */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
